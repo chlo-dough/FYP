@@ -41,8 +41,10 @@ class _PlotWidgetState extends State<PlotWidget> {
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('Home');
           },
         ),
         title: Text(

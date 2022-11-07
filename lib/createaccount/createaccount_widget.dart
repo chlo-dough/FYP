@@ -19,7 +19,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
 
   late bool confirmPasswordVisibility;
   TextEditingController? emailAddressController;
-  TextEditingController? nameController;
   TextEditingController? passwordController;
 
   late bool passwordVisibility;
@@ -31,7 +30,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
     confirmPasswordController = TextEditingController();
     confirmPasswordVisibility = false;
     emailAddressController = TextEditingController();
-    nameController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
   }
@@ -40,7 +38,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
   void dispose() {
     confirmPasswordController?.dispose();
     emailAddressController?.dispose();
-    nameController?.dispose();
     passwordController?.dispose();
     super.dispose();
   }
@@ -163,72 +160,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                   labelText: 'Email Address',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
                   hintText: 'Please enter your email...',
-                  hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Lexend Deca',
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                      ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
-                ),
-                style: FlutterFlowTheme.of(context).bodyText1,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24, 14, 24, 0),
-            child: Container(
-              width: double.infinity,
-              height: 60,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 5,
-                    color: Color(0x4D101213),
-                    offset: Offset(0, 2),
-                  )
-                ],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: TextFormField(
-                controller: nameController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintText: 'Please enter your name...',
                   hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Lexend Deca',
                         color: FlutterFlowTheme.of(context).secondaryText,

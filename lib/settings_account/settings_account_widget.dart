@@ -35,8 +35,9 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
             size: 30,
           ),
           onPressed: () async {
-            logFirebaseEvent('IconButton_navigate_back');
-            context.pop();
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('Settings');
           },
         ),
         title: Text(
@@ -89,19 +90,22 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '[Username]',
-                          style: FlutterFlowTheme.of(context).title3.override(
-                                fontFamily: 'Lexend Deca',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                        AuthUserStreamWidget(
+                          child: Text(
+                            currentUserDisplayName,
+                            style: FlutterFlowTheme.of(context).title3.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                           child: Text(
-                            '[Email_Address]',
+                            currentUserEmail,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Lexend Deca',

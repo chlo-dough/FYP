@@ -1,8 +1,16 @@
 // Export pages
 export 'startpage/startpage_widget.dart' show StartpageWidget;
 export 'login/login_widget.dart' show LoginWidget;
-export 'accountcreated/accountcreated_widget.dart' show AccountcreatedWidget;
+export 'createaccount_copy/createaccount_copy_widget.dart'
+    show CreateaccountCopyWidget;
 export 'createaccount/createaccount_widget.dart' show CreateaccountWidget;
+export 'createprofile/createprofile_widget.dart' show CreateprofileWidget;
+export 'createprof/createprof_widget.dart' show CreateprofWidget;
+export 'password/password_widget.dart' show PasswordWidget;
+export 'changepassword/changepassword_widget.dart' show ChangepasswordWidget;
+export 'forgotpwmy/forgotpwmy_widget.dart' show ForgotpwmyWidget;
+export 'forgotpwtemp/forgotpwtemp_widget.dart' show ForgotpwtempWidget;
+export 'accountcreated/accountcreated_widget.dart' show AccountcreatedWidget;
 export 'home/home_widget.dart' show HomeWidget;
 export 'logs/logs_widget.dart' show LogsWidget;
 export 'log_singular/log_singular_widget.dart' show LogSingularWidget;

@@ -34,8 +34,9 @@ class _SettingsIDSWidgetState extends State<SettingsIDSWidget> {
             size: 30,
           ),
           onPressed: () async {
-            logFirebaseEvent('IconButton_navigate_back');
-            context.pop();
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('Settings');
           },
         ),
         title: Text(

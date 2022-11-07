@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingsNotificationsWidget extends StatefulWidget {
@@ -18,6 +19,17 @@ class _SettingsNotificationsWidgetState
   bool? switchListTileValue1;
   bool? switchListTileValue2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('Settings-Notifications_navigate_to');
+
+      context.pushNamed('Settings');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +49,10 @@ class _SettingsNotificationsWidgetState
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('Settings');
           },
         ),
         title: Text(

@@ -55,8 +55,10 @@ class _SettingsAccountEditProfileWidgetState
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('Settings-Account');
           },
         ),
         title: Text(
@@ -256,10 +258,10 @@ class _SettingsAccountEditProfileWidgetState
                 options: FFButtonOptions(
                   width: 190,
                   height: 50,
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Lexend Deca',
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),

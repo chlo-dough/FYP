@@ -35,8 +35,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('IconButton_navigate_to');
+
+            context.pushNamed('Home');
           },
         ),
         title: Text(

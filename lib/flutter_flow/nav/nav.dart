@@ -87,14 +87,49 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
-              name: 'accountcreated',
-              path: 'accountcreated',
-              builder: (context, params) => AccountcreatedWidget(),
+              name: 'createaccountCopy',
+              path: 'createaccountCopy',
+              builder: (context, params) => CreateaccountCopyWidget(),
             ),
             FFRoute(
               name: 'createaccount',
               path: 'createaccount',
               builder: (context, params) => CreateaccountWidget(),
+            ),
+            FFRoute(
+              name: 'createprofile',
+              path: 'createprofile',
+              builder: (context, params) => CreateprofileWidget(),
+            ),
+            FFRoute(
+              name: 'createprof',
+              path: 'createprof',
+              builder: (context, params) => CreateprofWidget(),
+            ),
+            FFRoute(
+              name: 'password',
+              path: 'password',
+              builder: (context, params) => PasswordWidget(),
+            ),
+            FFRoute(
+              name: 'changepassword',
+              path: 'changepassword',
+              builder: (context, params) => ChangepasswordWidget(),
+            ),
+            FFRoute(
+              name: 'forgotpwmy',
+              path: 'forgotpwmy',
+              builder: (context, params) => ForgotpwmyWidget(),
+            ),
+            FFRoute(
+              name: 'forgotpwtemp',
+              path: 'forgotpwtemp',
+              builder: (context, params) => ForgotpwtempWidget(),
+            ),
+            FFRoute(
+              name: 'accountcreated',
+              path: 'accountcreated',
+              builder: (context, params) => AccountcreatedWidget(),
             ),
             FFRoute(
               name: 'Home',
