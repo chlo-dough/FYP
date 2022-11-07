@@ -186,6 +186,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   SettingsAccountChangePasswordWidget(),
             ),
             FFRoute(
+              name: 'Setting-Account-ChangePassword-Reworkied',
+              path: 'Setting-Account-ChangePassword-Reworking',
+              builder: (context, params) =>
+                  SettingAccountChangePasswordReworkiedWidget(),
+            ),
+            FFRoute(
               name: 'Settings-IDS',
               path: 'settingsIDS',
               builder: (context, params) => SettingsIDSWidget(),

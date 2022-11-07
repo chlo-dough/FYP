@@ -22,6 +22,8 @@ export 'settings_account_edit_profile/settings_account_edit_profile_widget.dart'
     show SettingsAccountEditProfileWidget;
 export 'settings_account_change_password/settings_account_change_password_widget.dart'
     show SettingsAccountChangePasswordWidget;
+export 'setting_account_change_password_reworkied/setting_account_change_password_reworkied_widget.dart'
+    show SettingAccountChangePasswordReworkiedWidget;
 export 'settings_i_d_s/settings_i_d_s_widget.dart' show SettingsIDSWidget;
 export 'settings_i_d_s_i_p/settings_i_d_s_i_p_widget.dart'
     show SettingsIDSIPWidget;
