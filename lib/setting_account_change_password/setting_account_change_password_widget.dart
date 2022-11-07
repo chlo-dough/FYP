@@ -5,17 +5,16 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SettingAccountChangePasswordReworkedWidget extends StatefulWidget {
-  const SettingAccountChangePasswordReworkedWidget({Key? key})
-      : super(key: key);
+class SettingAccountChangePasswordWidget extends StatefulWidget {
+  const SettingAccountChangePasswordWidget({Key? key}) : super(key: key);
 
   @override
-  _SettingAccountChangePasswordReworkedWidgetState createState() =>
-      _SettingAccountChangePasswordReworkedWidgetState();
+  _SettingAccountChangePasswordWidgetState createState() =>
+      _SettingAccountChangePasswordWidgetState();
 }
 
-class _SettingAccountChangePasswordReworkedWidgetState
-    extends State<SettingAccountChangePasswordReworkedWidget> {
+class _SettingAccountChangePasswordWidgetState
+    extends State<SettingAccountChangePasswordWidget> {
   TextEditingController? yourNameController1;
 
   late bool yourNameVisibility1;
@@ -71,7 +70,7 @@ class _SettingAccountChangePasswordReworkedWidgetState
           },
         ),
         title: Text(
-          'Change Password Test',
+          'Change Password',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).primaryText,

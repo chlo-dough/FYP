@@ -97,19 +97,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SetupprofileWidget(),
             ),
             FFRoute(
-              name: 'changepassword',
-              path: 'changepassword',
-              builder: (context, params) => ChangepasswordWidget(),
+              name: 'forgotpassword-putemail',
+              path: 'forgotpasswordPutemail',
+              builder: (context, params) => ForgotpasswordPutemailWidget(),
             ),
             FFRoute(
-              name: 'forgotpwmy',
-              path: 'forgotpwmy',
-              builder: (context, params) => ForgotpwmyWidget(),
-            ),
-            FFRoute(
-              name: 'forgotpwtemp',
-              path: 'forgotpwtemp',
-              builder: (context, params) => ForgotpwtempWidget(),
+              name: 'forgotpassword-resetpw',
+              path: 'forgotpasswordResetpw',
+              builder: (context, params) => ForgotpasswordResetpwWidget(),
             ),
             FFRoute(
               name: 'accountcreated',
@@ -165,16 +160,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsAccountEditProfileWidget(),
             ),
             FFRoute(
-              name: 'Settings-Account-ChangePassword',
-              path: 'changePassword',
-              builder: (context, params) =>
-                  SettingsAccountChangePasswordWidget(),
-            ),
-            FFRoute(
-              name: 'Setting-Account-ChangePassword-Reworked',
+              name: 'Setting-Account-ChangePassword',
               path: 'Setting-Account-ChangePassword-Reworking',
               builder: (context, params) =>
-                  SettingAccountChangePasswordReworkedWidget(),
+                  SettingAccountChangePasswordWidget(),
             ),
             FFRoute(
               name: 'Settings-IDS',
@@ -187,15 +176,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsIDSIPWidget(),
             ),
             FFRoute(
-              name: 'Settings-Notifications',
-              path: 'settingsNotifications',
-              builder: (context, params) => SettingsNotificationsWidget(),
-            ),
-            FFRoute(
-              name: 'Setting-Notifications-Reworked',
+              name: 'Setting-Notifications',
               path: 'Setting-Notificatiton-Reworking',
-              builder: (context, params) =>
-                  SettingNotificationsReworkedWidget(),
+              builder: (context, params) => SettingNotificationsWidget(),
             ),
             FFRoute(
               name: 'Setting-About',
@@ -206,11 +189,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'lograte',
               path: 'lograte',
               builder: (context, params) => LograteWidget(),
-            ),
-            FFRoute(
-              name: 'createprofile',
-              path: 'createprofile',
-              builder: (context, params) => CreateprofileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

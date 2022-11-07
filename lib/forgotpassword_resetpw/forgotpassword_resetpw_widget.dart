@@ -1,5 +1,3 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -7,18 +5,19 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CreateaccountWidget extends StatefulWidget {
-  const CreateaccountWidget({Key? key}) : super(key: key);
+class ForgotpasswordResetpwWidget extends StatefulWidget {
+  const ForgotpasswordResetpwWidget({Key? key}) : super(key: key);
 
   @override
-  _CreateaccountWidgetState createState() => _CreateaccountWidgetState();
+  _ForgotpasswordResetpwWidgetState createState() =>
+      _ForgotpasswordResetpwWidgetState();
 }
 
-class _CreateaccountWidgetState extends State<CreateaccountWidget> {
+class _ForgotpasswordResetpwWidgetState
+    extends State<ForgotpasswordResetpwWidget> {
   TextEditingController? confirmPasswordController;
 
   late bool confirmPasswordVisibility;
-  TextEditingController? emailAddressController;
   TextEditingController? passwordController;
 
   late bool passwordVisibility;
@@ -29,7 +28,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
     super.initState();
     confirmPasswordController = TextEditingController();
     confirmPasswordVisibility = false;
-    emailAddressController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
   }
@@ -37,7 +35,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
   @override
   void dispose() {
     confirmPasswordController?.dispose();
-    emailAddressController?.dispose();
     passwordController?.dispose();
     super.dispose();
   }
@@ -99,10 +96,10 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24, 10, 0, 0),
                   child: Text(
-                    'Create Account',
+                    'Forgot Your Password?',
                     style: FlutterFlowTheme.of(context).title1.override(
                           fontFamily: 'Poppins',
-                          fontSize: 32,
+                          fontSize: 26,
                         ),
                   ),
                 ),
@@ -126,7 +123,7 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                     child: Text(
-                      'Create your account by filling in the information below to access the app.',
+                      'Please enter your new password below.',
                       style: FlutterFlowTheme.of(context).subtitle2.override(
                             fontFamily: 'Poppins',
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -135,72 +132,6 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                   ),
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24, 14, 24, 0),
-            child: Container(
-              width: double.infinity,
-              height: 60,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 5,
-                    color: Color(0x4D101213),
-                    offset: Offset(0, 2),
-                  )
-                ],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: TextFormField(
-                controller: emailAddressController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Email Address',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintText: 'Please enter your email...',
-                  hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Lexend Deca',
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                      ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 0,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(24, 24, 20, 24),
-                ),
-                style: FlutterFlowTheme.of(context).bodyText1,
-              ),
             ),
           ),
           Padding(
@@ -365,45 +296,10 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
             child: FFButtonWidget(
-              onPressed: () async {
-                logFirebaseEvent('Button-Login_auth');
-                GoRouter.of(context).prepareAuthEvent();
-                if (passwordController?.text !=
-                    confirmPasswordController?.text) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        'Passwords don\'t match!',
-                      ),
-                    ),
-                  );
-                  return;
-                }
-
-                final user = await createAccountWithEmail(
-                  context,
-                  emailAddressController!.text,
-                  passwordController!.text,
-                );
-                if (user == null) {
-                  return;
-                }
-
-                final usersCreateData = createUsersRecordData(
-                  email: emailAddressController!.text,
-                  displayName: '',
-                );
-                await UsersRecord.collection
-                    .doc(user.uid)
-                    .update(usersCreateData);
-
-                logFirebaseEvent('Button-Login_auth');
-                await sendEmailVerification();
-                logFirebaseEvent('Button-Login_navigate_to');
-
-                context.pushNamedAuth('setupprofile', mounted);
+              onPressed: () {
+                print('Button-Login pressed ...');
               },
-              text: 'Create Account',
+              text: 'Reset Password',
               options: FFButtonOptions(
                 width: 270,
                 height: 50,

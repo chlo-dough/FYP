@@ -223,7 +223,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     logFirebaseEvent('Container_navigate_to');
 
                     context.pushNamed(
-                      'Setting-Notifications-Reworked',
+                      'Setting-Notifications',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
@@ -280,8 +280,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               onPressed: () async {
                                 logFirebaseEvent('IconButton_navigate_to');
 
-                                context.pushNamed(
-                                    'Setting-Notifications-Reworked');
+                                context.pushNamed('Setting-Notifications');
                               },
                             ),
                           ],
@@ -299,72 +298,55 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () async {
-                    logFirebaseEvent('Container_navigate_to');
-
-                    context.pushNamed(
-                      'Settings-Notifications',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
-                        ),
-                      },
-                    );
-                  },
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
+                Material(
+                  color: Colors.transparent,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
                       borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: 60,
-                      decoration: BoxDecoration(
+                      border: Border.all(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          width: 0,
-                        ),
+                        width: 0,
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 4, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Set Dark Mode',
-                              style: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                            ),
-                            Switch.adaptive(
-                              value: switchValue ??= false,
-                              onChanged: (newValue) async {
-                                setState(() => switchValue = newValue!);
-                                if (newValue!) {
-                                  logFirebaseEvent(
-                                      'Switch_set_dark_mode_settings');
-                                  setDarkModeSetting(context, ThemeMode.dark);
-                                } else {
-                                  logFirebaseEvent(
-                                      'Switch_set_dark_mode_settings');
-                                  setDarkModeSetting(context, ThemeMode.light);
-                                }
-                              },
-                            ),
-                          ],
-                        ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 4, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Set Dark Mode',
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle2
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                          ),
+                          Switch.adaptive(
+                            value: switchValue ??= false,
+                            onChanged: (newValue) async {
+                              setState(() => switchValue = newValue!);
+                              if (newValue!) {
+                                logFirebaseEvent(
+                                    'Switch_set_dark_mode_settings');
+                                setDarkModeSetting(context, ThemeMode.dark);
+                              } else {
+                                logFirebaseEvent(
+                                    'Switch_set_dark_mode_settings');
+                                setDarkModeSetting(context, ThemeMode.light);
+                              }
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ),

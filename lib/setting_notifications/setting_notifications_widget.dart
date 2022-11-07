@@ -5,16 +5,16 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SettingNotificationsReworkedWidget extends StatefulWidget {
-  const SettingNotificationsReworkedWidget({Key? key}) : super(key: key);
+class SettingNotificationsWidget extends StatefulWidget {
+  const SettingNotificationsWidget({Key? key}) : super(key: key);
 
   @override
-  _SettingNotificationsReworkedWidgetState createState() =>
-      _SettingNotificationsReworkedWidgetState();
+  _SettingNotificationsWidgetState createState() =>
+      _SettingNotificationsWidgetState();
 }
 
-class _SettingNotificationsReworkedWidgetState
-    extends State<SettingNotificationsReworkedWidget> {
+class _SettingNotificationsWidgetState
+    extends State<SettingNotificationsWidget> {
   bool? switchListTileValue1;
   bool? switchListTileValue2;
   final scaffoldKey = GlobalKey<ScaffoldState>();

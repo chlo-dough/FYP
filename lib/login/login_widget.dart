@@ -319,8 +319,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(30, 44, 9, 0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button-Login pressed ...');
+                    onPressed: () async {
+                      logFirebaseEvent('Button-Login_navigate_to');
+
+                      context.pushNamed('forgotpassword-putemail');
                     },
                     text: 'Forgot Password?',
                     options: FFButtonOptions(
