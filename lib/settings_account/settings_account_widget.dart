@@ -30,12 +30,13 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
           borderWidth: 1,
           buttonSize: 60,
           icon: Icon(
-            Icons.menu_rounded,
+            Icons.arrow_back,
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            logFirebaseEvent('IconButton_navigate_back');
+            context.pop();
           },
         ),
         title: Text(

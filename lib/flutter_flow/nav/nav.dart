@@ -111,16 +111,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : LogsWidget(),
             ),
             FFRoute(
+              name: 'Log-Singular',
+              path: 'logSingular',
+              asyncParams: {
+                'logReceive': getDoc('users', UsersRecord.serializer),
+              },
+              builder: (context, params) => LogSingularWidget(
+                logReceive: params.getParam('logReceive', ParamType.Document),
+              ),
+            ),
+            FFRoute(
               name: 'Plot',
               path: 'plot',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Plot')
                   : PlotWidget(),
-            ),
-            FFRoute(
-              name: 'lograte',
-              path: 'lograte',
-              builder: (context, params) => LograteWidget(),
             ),
             FFRoute(
               name: 'Settings',
@@ -151,9 +156,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsIDSWidget(),
             ),
             FFRoute(
+              name: 'Settings-IDS-IP',
+              path: 'settingsIDSIP',
+              builder: (context, params) => SettingsIDSIPWidget(),
+            ),
+            FFRoute(
               name: 'Settings-Notifications',
               path: 'settingsNotifications',
               builder: (context, params) => SettingsNotificationsWidget(),
+            ),
+            FFRoute(
+              name: 'lograte',
+              path: 'lograte',
+              builder: (context, params) => LograteWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

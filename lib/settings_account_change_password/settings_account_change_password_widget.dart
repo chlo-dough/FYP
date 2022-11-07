@@ -73,9 +73,8 @@ class _SettingsAccountChangePasswordWidgetState
                               size: 30,
                             ),
                             onPressed: () async {
-                              logFirebaseEvent('IconButton_navigate_to');
-
-                              context.pushNamed('Settings-Account');
+                              logFirebaseEvent('IconButton_navigate_back');
+                              context.pop();
                             },
                           ),
                         ),

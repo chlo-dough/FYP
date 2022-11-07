@@ -37,13 +37,12 @@ class _PlotWidgetState extends State<PlotWidget> {
           borderWidth: 1,
           buttonSize: 60,
           icon: Icon(
-            Icons.menu_rounded,
+            Icons.arrow_back,
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () async {
-            logFirebaseEvent('IconButton_drawer');
-            scaffoldKey.currentState!.openDrawer();
+          onPressed: () {
+            print('IconButton pressed ...');
           },
         ),
         title: Text(
@@ -70,7 +69,7 @@ class _PlotWidgetState extends State<PlotWidget> {
                 child: Column(
                   children: [
                     TabBar(
-                      labelColor: Color(0xFF4B39EF),
+                      labelColor: FlutterFlowTheme.of(context).primaryText,
                       unselectedLabelColor: Color(0xFF57636C),
                       labelStyle:
                           FlutterFlowTheme.of(context).subtitle1.override(
@@ -79,7 +78,8 @@ class _PlotWidgetState extends State<PlotWidget> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
-                      indicatorColor: Color(0xFF4B39EF),
+                      indicatorColor:
+                          FlutterFlowTheme.of(context).secondaryColor,
                       tabs: [
                         Tab(
                           text: 'Plot',

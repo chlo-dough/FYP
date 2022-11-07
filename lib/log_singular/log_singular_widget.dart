@@ -1,18 +1,24 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import 'package:easy_debounce/easy_debounce.dart';
+import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LogsWidget extends StatefulWidget {
-  const LogsWidget({Key? key}) : super(key: key);
+class LogSingularWidget extends StatefulWidget {
+  const LogSingularWidget({
+    Key? key,
+    this.logReceive,
+  }) : super(key: key);
+
+  final UsersRecord? logReceive;
 
   @override
-  _LogsWidgetState createState() => _LogsWidgetState();
+  _LogSingularWidgetState createState() => _LogSingularWidgetState();
 }
 
-class _LogsWidgetState extends State<LogsWidget> {
+class _LogSingularWidgetState extends State<LogSingularWidget> {
   TextEditingController? searchBarController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -67,21 +73,14 @@ class _LogsWidgetState extends State<LogsWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Padding(
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                     child: TextFormField(
                       controller: searchBarController,
-                      onChanged: (_) => EasyDebounce.debounce(
-                        'searchBarController',
-                        Duration(milliseconds: 500),
-                        () => setState(() {}),
-                      ),
                       obscureText: false,
                       decoration: InputDecoration(
                         labelText: 'Search/Filter',
@@ -145,13 +144,33 @@ class _LogsWidgetState extends State<LogsWidget> {
                           ),
                     ),
                   ),
-                  SelectionArea(
-                      child: Text(
-                    'Hello World',
-                    style: FlutterFlowTheme.of(context).bodyText1,
-                  )),
-                ],
-              ),
+                ),
+              ],
+            ),
+            ListView(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              children: [
+                Card(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                    child: SelectionArea(
+                        child: Text(
+                      random_data.randomString(
+                        0,
+                        0,
+                        false,
+                        false,
+                        false,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1,
+                    )),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -426,7 +426,7 @@ class _LograteWidgetState extends State<LograteWidget>
           borderWidth: 1,
           buttonSize: 60,
           icon: Icon(
-            Icons.menu_rounded,
+            Icons.arrow_back,
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),

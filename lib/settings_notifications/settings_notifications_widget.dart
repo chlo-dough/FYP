@@ -25,7 +25,7 @@ class _SettingsNotificationsWidgetState
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).maximumBlueGreen,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -33,18 +33,16 @@ class _SettingsNotificationsWidgetState
           borderWidth: 1,
           buttonSize: 60,
           icon: Icon(
-            Icons.arrow_back_rounded,
+            Icons.arrow_back,
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () async {
-            logFirebaseEvent('IconButton_navigate_to');
-
-            context.pushNamed('Settings-Account');
+          onPressed: () {
+            print('IconButton pressed ...');
           },
         ),
         title: Text(
-          'Notification Settings',
+          'Notifications',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).primaryText,
@@ -52,26 +50,12 @@ class _SettingsNotificationsWidgetState
               ),
         ),
         actions: [],
-        centerTitle: false,
-        elevation: 0,
+        centerTitle: true,
+        elevation: 2,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Text(
-                    'Choose what notifcations you want to recieve below and we will update the settings.',
-                    style: FlutterFlowTheme.of(context).bodyText2,
-                  ),
-                ),
-              ],
-            ),
-          ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
             child: SwitchListTile.adaptive(

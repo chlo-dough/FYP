@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -28,35 +27,6 @@ class _HomeWidgetState extends State<HomeWidget> {
         child: Drawer(
           elevation: 16,
         ),
-      ),
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).maximumBlueGreen,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
-          icon: Icon(
-            Icons.menu_rounded,
-            color: FlutterFlowTheme.of(context).primaryText,
-            size: 30,
-          ),
-          onPressed: () {
-            print('IconButton pressed ...');
-          },
-        ),
-        title: Text(
-          'Home',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
-                color: FlutterFlowTheme.of(context).primaryText,
-                fontSize: 22,
-              ),
-        ),
-        actions: [],
-        centerTitle: true,
-        elevation: 2,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -90,7 +60,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   child: Text(
                                     valueOrDefault<String>(
                                       currentUserDisplayName,
-                                      'defult_name',
+                                      'default_name',
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .title3
