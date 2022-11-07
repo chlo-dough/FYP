@@ -29,4 +29,8 @@ export 'settings_i_d_s_i_p/settings_i_d_s_i_p_widget.dart'
     show SettingsIDSIPWidget;
 export 'settings_notifications/settings_notifications_widget.dart'
     show SettingsNotificationsWidget;
+export 'setting_notifications_reworking/setting_notifications_reworking_widget.dart'
+    show SettingNotificationsReworkingWidget;
 export 'lograte/lograte_widget.dart' show LograteWidget;
+export 'settings_notifications_copy/settings_notifications_copy_widget.dart'
+    show SettingsNotificationsCopyWidget;

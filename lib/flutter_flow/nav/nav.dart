@@ -207,9 +207,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsNotificationsWidget(),
             ),
             FFRoute(
+              name: 'Setting-Notifications-Reworking',
+              path: 'Setting-Notifications-Reworking',
+              builder: (context, params) =>
+                  SettingNotificationsReworkingWidget(),
+            ),
+            FFRoute(
               name: 'lograte',
               path: 'lograte',
               builder: (context, params) => LograteWidget(),
+            ),
+            FFRoute(
+              name: 'Settings-NotificationsCopy',
+              path: 'settingsNotificationsCopy',
+              builder: (context, params) => SettingsNotificationsCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
