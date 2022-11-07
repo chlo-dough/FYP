@@ -60,7 +60,7 @@ class _SettingsAccountEditProfileWidgetState
           },
         ),
         title: Text(
-          'Page Title',
+          'Edit Profile',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).primaryText,

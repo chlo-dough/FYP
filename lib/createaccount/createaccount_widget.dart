@@ -18,8 +18,8 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
   TextEditingController? confirmPasswordController;
 
   late bool confirmPasswordVisibility;
-  TextEditingController? displayNameController;
   TextEditingController? emailAddressController;
+  TextEditingController? nameController;
   TextEditingController? passwordController;
 
   late bool passwordVisibility;
@@ -30,8 +30,8 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
     super.initState();
     confirmPasswordController = TextEditingController();
     confirmPasswordVisibility = false;
-    displayNameController = TextEditingController();
     emailAddressController = TextEditingController();
+    nameController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
   }
@@ -39,8 +39,8 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
   @override
   void dispose() {
     confirmPasswordController?.dispose();
-    displayNameController?.dispose();
     emailAddressController?.dispose();
+    nameController?.dispose();
     passwordController?.dispose();
     super.dispose();
   }
@@ -157,12 +157,12 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: TextFormField(
-                controller: displayNameController,
+                controller: emailAddressController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: 'Name',
+                  labelText: 'Email Address',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintText: 'Please enter your name...',
+                  hintText: 'Please enter your email...',
                   hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Lexend Deca',
                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -223,12 +223,12 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: TextFormField(
-                controller: emailAddressController,
+                controller: nameController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: 'Email address',
+                  labelText: 'Name',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintText: 'Please enter your email...',
+                  hintText: 'Please enter your name...',
                   hintStyle: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Lexend Deca',
                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -451,7 +451,7 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
 
                 final user = await createAccountWithEmail(
                   context,
-                  displayNameController!.text,
+                  emailAddressController!.text,
                   passwordController!.text,
                 );
                 if (user == null) {
@@ -459,7 +459,7 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                 }
 
                 final usersCreateData = createUsersRecordData(
-                  email: displayNameController!.text,
+                  email: emailAddressController!.text,
                   displayName: '',
                 );
                 await UsersRecord.collection
