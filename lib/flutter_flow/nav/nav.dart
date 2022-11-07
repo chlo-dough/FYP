@@ -87,29 +87,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
-              name: 'createaccountCopy',
-              path: 'createaccountCopy',
-              builder: (context, params) => CreateaccountCopyWidget(),
-            ),
-            FFRoute(
               name: 'createaccount',
               path: 'createaccount',
               builder: (context, params) => CreateaccountWidget(),
             ),
             FFRoute(
-              name: 'createprofile',
-              path: 'createprofile',
-              builder: (context, params) => CreateprofileWidget(),
-            ),
-            FFRoute(
-              name: 'createprof',
-              path: 'createprof',
-              builder: (context, params) => CreateprofWidget(),
-            ),
-            FFRoute(
-              name: 'password',
-              path: 'password',
-              builder: (context, params) => PasswordWidget(),
+              name: 'setupprofile',
+              path: 'setupprofile',
+              builder: (context, params) => SetupprofileWidget(),
             ),
             FFRoute(
               name: 'changepassword',
@@ -186,10 +171,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   SettingsAccountChangePasswordWidget(),
             ),
             FFRoute(
-              name: 'Setting-Account-ChangePassword-Reworkied',
+              name: 'Setting-Account-ChangePassword-Reworked',
               path: 'Setting-Account-ChangePassword-Reworking',
               builder: (context, params) =>
-                  SettingAccountChangePasswordReworkiedWidget(),
+                  SettingAccountChangePasswordReworkedWidget(),
             ),
             FFRoute(
               name: 'Settings-IDS',
@@ -207,10 +192,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsNotificationsWidget(),
             ),
             FFRoute(
-              name: 'Setting-Notifications-Reworking',
-              path: 'Setting-Notifications-Reworking',
+              name: 'Setting-Notifications-Reworked',
+              path: 'Setting-Notificatiton-Reworking',
               builder: (context, params) =>
-                  SettingNotificationsReworkingWidget(),
+                  SettingNotificationsReworkedWidget(),
+            ),
+            FFRoute(
+              name: 'Setting-About',
+              path: 'Setting-About',
+              builder: (context, params) => SettingAboutWidget(),
             ),
             FFRoute(
               name: 'lograte',
@@ -218,9 +208,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LograteWidget(),
             ),
             FFRoute(
-              name: 'Settings-NotificationsCopy',
-              path: 'settingsNotificationsCopy',
-              builder: (context, params) => SettingsNotificationsCopyWidget(),
+              name: 'createprofile',
+              path: 'createprofile',
+              builder: (context, params) => CreateprofileWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

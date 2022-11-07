@@ -1,12 +1,8 @@
 // Export pages
 export 'startpage/startpage_widget.dart' show StartpageWidget;
 export 'login/login_widget.dart' show LoginWidget;
-export 'createaccount_copy/createaccount_copy_widget.dart'
-    show CreateaccountCopyWidget;
 export 'createaccount/createaccount_widget.dart' show CreateaccountWidget;
-export 'createprofile/createprofile_widget.dart' show CreateprofileWidget;
-export 'createprof/createprof_widget.dart' show CreateprofWidget;
-export 'password/password_widget.dart' show PasswordWidget;
+export 'setupprofile/setupprofile_widget.dart' show SetupprofileWidget;
 export 'changepassword/changepassword_widget.dart' show ChangepasswordWidget;
 export 'forgotpwmy/forgotpwmy_widget.dart' show ForgotpwmyWidget;
 export 'forgotpwtemp/forgotpwtemp_widget.dart' show ForgotpwtempWidget;
@@ -22,15 +18,15 @@ export 'settings_account_edit_profile/settings_account_edit_profile_widget.dart'
     show SettingsAccountEditProfileWidget;
 export 'settings_account_change_password/settings_account_change_password_widget.dart'
     show SettingsAccountChangePasswordWidget;
-export 'setting_account_change_password_reworkied/setting_account_change_password_reworkied_widget.dart'
-    show SettingAccountChangePasswordReworkiedWidget;
+export 'setting_account_change_password_reworked/setting_account_change_password_reworked_widget.dart'
+    show SettingAccountChangePasswordReworkedWidget;
 export 'settings_i_d_s/settings_i_d_s_widget.dart' show SettingsIDSWidget;
 export 'settings_i_d_s_i_p/settings_i_d_s_i_p_widget.dart'
     show SettingsIDSIPWidget;
 export 'settings_notifications/settings_notifications_widget.dart'
     show SettingsNotificationsWidget;
-export 'setting_notifications_reworking/setting_notifications_reworking_widget.dart'
-    show SettingNotificationsReworkingWidget;
+export 'setting_notifications_reworked/setting_notifications_reworked_widget.dart'
+    show SettingNotificationsReworkedWidget;
+export 'setting_about/setting_about_widget.dart' show SettingAboutWidget;
 export 'lograte/lograte_widget.dart' show LograteWidget;
-export 'settings_notifications_copy/settings_notifications_copy_widget.dart'
-    show SettingsNotificationsCopyWidget;
+export 'createprofile/createprofile_widget.dart' show CreateprofileWidget;

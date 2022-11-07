@@ -1,24 +1,28 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
-class CreateaccountCopyWidget extends StatefulWidget {
-  const CreateaccountCopyWidget({Key? key}) : super(key: key);
+class SetupprofileWidget extends StatefulWidget {
+  const SetupprofileWidget({Key? key}) : super(key: key);
 
   @override
-  _CreateaccountCopyWidgetState createState() =>
-      _CreateaccountCopyWidgetState();
+  _SetupprofileWidgetState createState() => _SetupprofileWidgetState();
 }
 
-class _CreateaccountCopyWidgetState extends State<CreateaccountCopyWidget> {
+class _SetupprofileWidgetState extends State<SetupprofileWidget> {
+  bool isMediaUploading = false;
+  String uploadedFileUrl = '';
+
   TextEditingController? nameController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -91,7 +95,7 @@ class _CreateaccountCopyWidgetState extends State<CreateaccountCopyWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24, 10, 0, 0),
                   child: Text(
-                    'Create ',
+                    'Set Up Profile',
                     style: FlutterFlowTheme.of(context).title1.override(
                           fontFamily: 'Poppins',
                           fontSize: 32,
@@ -144,41 +148,112 @@ class _CreateaccountCopyWidgetState extends State<CreateaccountCopyWidget> {
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: InkWell(
-                      onLongPress: () async {
-                        logFirebaseEvent('CircleImage_expand_image');
-                        await Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.fade,
-                            child: FlutterFlowExpandedImageView(
-                              image: Image.network(
-                                'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
-                                fit: BoxFit.contain,
+                    child: AuthUserStreamWidget(
+                      child: InkWell(
+                        onLongPress: () async {
+                          logFirebaseEvent('CircleImage_expand_image');
+                          await Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.fade,
+                              child: FlutterFlowExpandedImageView(
+                                image: Image.network(
+                                  currentUserPhoto,
+                                  fit: BoxFit.contain,
+                                ),
+                                allowRotation: false,
+                                tag: currentUserPhoto,
+                                useHeroAnimation: true,
                               ),
-                              allowRotation: false,
-                              tag: 'circleImageTag',
-                              useHeroAnimation: true,
                             ),
-                          ),
-                        );
-                      },
-                      child: Hero(
-                        tag: 'circleImageTag',
-                        transitionOnUserGestures: true,
-                        child: Container(
-                          width: 90,
-                          height: 90,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
-                            fit: BoxFit.fitWidth,
+                          );
+                        },
+                        child: Hero(
+                          tag: currentUserPhoto,
+                          transitionOnUserGestures: true,
+                          child: Container(
+                            width: 90,
+                            height: 90,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.network(
+                              currentUserPhoto,
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
                         ),
                       ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FFButtonWidget(
+                  onPressed: () async {
+                    logFirebaseEvent('Button_upload_photo_video');
+                    final selectedMedia =
+                        await selectMediaWithSourceBottomSheet(
+                      context: context,
+                      allowPhoto: true,
+                    );
+                    if (selectedMedia != null &&
+                        selectedMedia.every((m) =>
+                            validateFileFormat(m.storagePath, context))) {
+                      setState(() => isMediaUploading = true);
+                      var downloadUrls = <String>[];
+                      try {
+                        showUploadMessage(
+                          context,
+                          'Uploading file...',
+                          showLoading: true,
+                        );
+                        downloadUrls = (await Future.wait(
+                          selectedMedia.map(
+                            (m) async =>
+                                await uploadData(m.storagePath, m.bytes),
+                          ),
+                        ))
+                            .where((u) => u != null)
+                            .map((u) => u!)
+                            .toList();
+                      } finally {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        isMediaUploading = false;
+                      }
+                      if (downloadUrls.length == selectedMedia.length) {
+                        setState(() => uploadedFileUrl = downloadUrls.first);
+                        showUploadMessage(context, 'Success!');
+                      } else {
+                        setState(() {});
+                        showUploadMessage(context, 'Failed to upload media');
+                        return;
+                      }
+                    }
+                  },
+                  text: 'Change Photo',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Lexend Deca',
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                    elevation: 1,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
                     ),
                   ),
                 ),

@@ -212,7 +212,7 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
                     logFirebaseEvent('Container_navigate_to');
 
                     context.pushNamed(
-                      'Setting-Account-ChangePassword-Reworkied',
+                      'Setting-Account-ChangePassword-Reworked',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,

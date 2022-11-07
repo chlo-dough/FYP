@@ -5,28 +5,37 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SettingAccountChangePasswordReworkiedWidget extends StatefulWidget {
-  const SettingAccountChangePasswordReworkiedWidget({Key? key})
+class SettingAccountChangePasswordReworkedWidget extends StatefulWidget {
+  const SettingAccountChangePasswordReworkedWidget({Key? key})
       : super(key: key);
 
   @override
-  _SettingAccountChangePasswordReworkiedWidgetState createState() =>
-      _SettingAccountChangePasswordReworkiedWidgetState();
+  _SettingAccountChangePasswordReworkedWidgetState createState() =>
+      _SettingAccountChangePasswordReworkedWidgetState();
 }
 
-class _SettingAccountChangePasswordReworkiedWidgetState
-    extends State<SettingAccountChangePasswordReworkiedWidget> {
+class _SettingAccountChangePasswordReworkedWidgetState
+    extends State<SettingAccountChangePasswordReworkedWidget> {
   TextEditingController? yourNameController1;
+
+  late bool yourNameVisibility1;
   TextEditingController? yourNameController2;
+
+  late bool yourNameVisibility2;
   TextEditingController? yourNameController3;
+
+  late bool yourNameVisibility3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     yourNameController1 = TextEditingController();
+    yourNameVisibility1 = false;
     yourNameController2 = TextEditingController();
+    yourNameVisibility2 = false;
     yourNameController3 = TextEditingController();
+    yourNameVisibility3 = false;
   }
 
   @override
@@ -81,7 +90,7 @@ class _SettingAccountChangePasswordReworkiedWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
               child: TextFormField(
                 controller: yourNameController1,
-                obscureText: false,
+                obscureText: !yourNameVisibility1,
                 decoration: InputDecoration(
                   labelText: 'Current Password',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
@@ -117,6 +126,19 @@ class _SettingAccountChangePasswordReworkiedWidgetState
                   filled: true,
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => yourNameVisibility1 = !yourNameVisibility1,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      yourNameVisibility1
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
                 ),
                 style: FlutterFlowTheme.of(context).bodyText1,
               ),
@@ -125,7 +147,7 @@ class _SettingAccountChangePasswordReworkiedWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
               child: TextFormField(
                 controller: yourNameController2,
-                obscureText: false,
+                obscureText: !yourNameVisibility2,
                 decoration: InputDecoration(
                   labelText: 'New Password',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
@@ -161,6 +183,19 @@ class _SettingAccountChangePasswordReworkiedWidgetState
                   filled: true,
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => yourNameVisibility2 = !yourNameVisibility2,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      yourNameVisibility2
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
                 ),
                 style: FlutterFlowTheme.of(context).bodyText1,
               ),
@@ -169,7 +204,7 @@ class _SettingAccountChangePasswordReworkiedWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
               child: TextFormField(
                 controller: yourNameController3,
-                obscureText: false,
+                obscureText: !yourNameVisibility3,
                 decoration: InputDecoration(
                   labelText: 'Confirm New Password',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
@@ -205,6 +240,19 @@ class _SettingAccountChangePasswordReworkiedWidgetState
                   filled: true,
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => yourNameVisibility3 = !yourNameVisibility3,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      yourNameVisibility3
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
                 ),
                 style: FlutterFlowTheme.of(context).bodyText1,
               ),

@@ -223,7 +223,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     logFirebaseEvent('Container_navigate_to');
 
                     context.pushNamed(
-                      'Settings-NotificationsCopy',
+                      'Setting-Notifications-Reworked',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
@@ -253,46 +253,38 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 0, 4, 0),
-                        child: InkWell(
-                          onTap: () async {
-                            logFirebaseEvent('Row_navigate_to');
-
-                            context
-                                .pushNamed('Setting-Notifications-Reworking');
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Notifications',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Notifications',
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                            ),
+                            FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              buttonSize: 46,
+                              icon: Icon(
+                                Icons.chevron_right_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 20,
                               ),
-                              FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                buttonSize: 46,
-                                icon: Icon(
-                                  Icons.chevron_right_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 20,
-                                ),
-                                onPressed: () async {
-                                  logFirebaseEvent('IconButton_navigate_to');
+                              onPressed: () async {
+                                logFirebaseEvent('IconButton_navigate_to');
 
-                                  context.pushNamed(
-                                      'Setting-Notifications-Reworking');
-                                },
-                              ),
-                            ],
-                          ),
+                                context.pushNamed(
+                                    'Setting-Notifications-Reworked');
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -391,7 +383,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     logFirebaseEvent('Container_navigate_to');
 
                     context.pushNamed(
-                      'Settings-Notifications',
+                      'Setting-About',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,

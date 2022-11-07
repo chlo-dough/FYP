@@ -5,19 +5,18 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SettingNotificationsReworkingWidget extends StatefulWidget {
-  const SettingNotificationsReworkingWidget({Key? key}) : super(key: key);
+class SettingNotificationsReworkedWidget extends StatefulWidget {
+  const SettingNotificationsReworkedWidget({Key? key}) : super(key: key);
 
   @override
-  _SettingNotificationsReworkingWidgetState createState() =>
-      _SettingNotificationsReworkingWidgetState();
+  _SettingNotificationsReworkedWidgetState createState() =>
+      _SettingNotificationsReworkedWidgetState();
 }
 
-class _SettingNotificationsReworkingWidgetState
-    extends State<SettingNotificationsReworkingWidget> {
+class _SettingNotificationsReworkedWidgetState
+    extends State<SettingNotificationsReworkedWidget> {
   bool? switchListTileValue1;
   bool? switchListTileValue2;
-  bool? switchListTileValue3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -41,7 +40,7 @@ class _SettingNotificationsReworkingWidgetState
           onPressed: () async {
             logFirebaseEvent('IconButton_navigate_to');
 
-            context.pushNamed('Settings-Account');
+            context.pushNamed('Settings');
           },
         ),
         title: Text(
@@ -72,10 +71,12 @@ class _SettingNotificationsReworkingWidgetState
                   style: FlutterFlowTheme.of(context).title3,
                 ),
                 subtitle: Text(
-                  'Receive push notifications from our applications',
+                  'Receive push notifications from our application.',
                   style: FlutterFlowTheme.of(context).subtitle2,
                 ),
-                tileColor: FlutterFlowTheme.of(context).primaryText,
+                tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                activeTrackColor:
+                    FlutterFlowTheme.of(context).secondaryBackground,
                 dense: false,
                 controlAffinity: ListTileControlAffinity.trailing,
               ),
@@ -90,10 +91,12 @@ class _SettingNotificationsReworkingWidgetState
                 style: FlutterFlowTheme.of(context).title3,
               ),
               subtitle: Text(
-                'Receive email notifications from our applications',
+                'Receive email notifications from our application.',
                 style: FlutterFlowTheme.of(context).subtitle2,
               ),
-              tileColor: Color(0xFFF5F5F5),
+              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+              activeTrackColor:
+                  FlutterFlowTheme.of(context).secondaryBackground,
               dense: false,
               controlAffinity: ListTileControlAffinity.trailing,
             ),
@@ -107,7 +110,7 @@ class _SettingNotificationsReworkingWidgetState
                 options: FFButtonOptions(
                   width: 190,
                   height: 50,
-                  color: Colors.white,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Lexend Deca',
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -121,23 +124,6 @@ class _SettingNotificationsReworkingWidgetState
                   ),
                 ),
               ),
-            ),
-            SwitchListTile(
-              value: switchListTileValue3 ??= true,
-              onChanged: (newValue) async {
-                setState(() => switchListTileValue3 = newValue!);
-              },
-              title: Text(
-                'Title',
-                style: FlutterFlowTheme.of(context).title3,
-              ),
-              subtitle: Text(
-                'Subtitle',
-                style: FlutterFlowTheme.of(context).subtitle2,
-              ),
-              tileColor: Color(0xFFF5F5F5),
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
             ),
           ],
         ),
