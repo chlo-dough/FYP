@@ -189,6 +189,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'lograte',
               path: 'lograte',
               builder: (context, params) => LograteWidget(),
+            ),
+            FFRoute(
+              name: 'dummychart',
+              path: 'dummychart',
+              builder: (context, params) => DummychartWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

@@ -26,3 +26,4 @@ export 'setting_notifications/setting_notifications_widget.dart'
     show SettingNotificationsWidget;
 export 'setting_about/setting_about_widget.dart' show SettingAboutWidget;
 export 'lograte/lograte_widget.dart' show LograteWidget;
+export 'dummychart/dummychart_widget.dart' show DummychartWidget;

@@ -57,10 +57,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
                                 child: AuthUserStreamWidget(
                                   child: Text(
-                                    valueOrDefault<String>(
-                                      currentUserDisplayName,
-                                      'default_name',
-                                    ),
+                                    currentUserDisplayName,
                                     style: FlutterFlowTheme.of(context)
                                         .title3
                                         .override(
