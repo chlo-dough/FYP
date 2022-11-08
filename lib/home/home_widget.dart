@@ -83,6 +83,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                       child: InkWell(
+                        onTap: () async {
+                          logFirebaseEvent('CircleImage_navigate_to');
+
+                          context.pushNamed('Settings-Account');
+                        },
                         onLongPress: () async {
                           logFirebaseEvent('CircleImage_expand_image');
                           await Navigator.push(
