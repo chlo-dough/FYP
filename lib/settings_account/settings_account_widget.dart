@@ -286,19 +286,47 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
                 logFirebaseEvent('Button_auth');
                 GoRouter.of(context).prepareAuthEvent();
                 await signOut();
-                logFirebaseEvent('Button_navigate_to');
+                logFirebaseEvent('Button_alert_dialog');
+                var confirmDialogResponse = await showDialog<bool>(
+                      context: context,
+                      builder: (alertDialogContext) {
+                        return AlertDialog(
+                          title: Text('Log out'),
+                          content: Text('Log out of account?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext, false),
+                              child: Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext, true),
+                              child: Text('Confirm'),
+                            ),
+                          ],
+                        );
+                      },
+                    ) ??
+                    false;
+                if (confirmDialogResponse) {
+                  logFirebaseEvent('Button_navigate_to');
 
-                context.pushNamedAuth(
-                  'login',
-                  mounted,
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                    ),
-                  },
-                );
+                  context.goNamedAuth(
+                    'login',
+                    mounted,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
+                } else {
+                  logFirebaseEvent('Button_navigate_back');
+                  context.pop();
+                }
               },
               text: 'Log Out',
               options: FFButtonOptions(

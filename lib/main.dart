@@ -17,6 +17,8 @@ void main() async {
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
 
+  FFAppState(); // Initialize FFAppState
+
   runApp(MyApp());
 }
 
@@ -115,7 +117,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'HomeCopy': HomeCopyWidget(),
+      'ELK': ElkWidget(),
       'Logs': LogsWidget(),
       'Plot': PlotWidget(),
       'Settings': SettingsWidget(),
@@ -146,10 +148,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.format_list_bulleted_rounded,
               size: 24,
             ),
-            label: 'Home2Test',
+            label: 'Analytics',
             tooltip: '',
           ),
           BottomNavigationBarItem(
