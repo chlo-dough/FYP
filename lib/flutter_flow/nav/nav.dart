@@ -119,6 +119,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
+              name: 'HomeCopy',
+              path: 'homeCopy',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomeCopy')
+                  : HomeCopyWidget(),
+            ),
+            FFRoute(
               name: 'Logs',
               path: 'logs',
               builder: (context, params) => params.isEmpty

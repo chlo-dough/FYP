@@ -115,6 +115,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
+      'HomeCopy': HomeCopyWidget(),
       'Logs': LogsWidget(),
       'Plot': PlotWidget(),
       'Settings': SettingsWidget(),
@@ -141,6 +142,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              size: 24,
+            ),
+            label: 'Home2Test',
             tooltip: '',
           ),
           BottomNavigationBarItem(

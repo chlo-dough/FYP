@@ -9,6 +9,7 @@ export 'forgotpassword_resetpw/forgotpassword_resetpw_widget.dart'
     show ForgotpasswordResetpwWidget;
 export 'accountcreated/accountcreated_widget.dart' show AccountcreatedWidget;
 export 'home/home_widget.dart' show HomeWidget;
+export 'home_copy/home_copy_widget.dart' show HomeCopyWidget;
 export 'logs/logs_widget.dart' show LogsWidget;
 export 'log_singular/log_singular_widget.dart' show LogSingularWidget;
 export 'plot/plot_widget.dart' show PlotWidget;
