@@ -27,7 +27,8 @@ class _ElkWidgetState extends State<ElkWidget> {
             FlutterFlowWebView(
               url: FFAppState().test,
               bypass: false,
-              height: 1000,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.95,
               verticalScroll: true,
               horizontalScroll: true,
             ),
