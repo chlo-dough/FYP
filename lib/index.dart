@@ -9,9 +9,8 @@ export 'forgotpassword_putemail/forgotpassword_putemail_widget.dart'
 export 'forgotpassword_resetpw/forgotpassword_resetpw_widget.dart'
     show ForgotpasswordResetpwWidget;
 export 'home/home_widget.dart' show HomeWidget;
-export 'elk/elk_widget.dart' show ElkWidget;
-export 'logs/logs_widget.dart' show LogsWidget;
-export 'log_singular/log_singular_widget.dart' show LogSingularWidget;
+export 'detailed_alert/detailed_alert_widget.dart' show DetailedAlertWidget;
+export 'history/history_widget.dart' show HistoryWidget;
 export 'plot/plot_widget.dart' show PlotWidget;
 export 'settings/settings_widget.dart' show SettingsWidget;
 export 'settings_account/settings_account_widget.dart'
@@ -27,4 +26,3 @@ export 'setting_notifications/setting_notifications_widget.dart'
     show SettingNotificationsWidget;
 export 'setting_about/setting_about_widget.dart' show SettingAboutWidget;
 export 'lograte/lograte_widget.dart' show LograteWidget;
-export 'dummychart/dummychart_widget.dart' show DummychartWidget;

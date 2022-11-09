@@ -212,7 +212,7 @@ class _ForgotpasswordPutemailWidgetState
                   context: context,
                 );
               },
-              text: 'Send Link',
+              text: 'Send Reset Link',
               options: FFButtonOptions(
                 width: 270,
                 height: 50,

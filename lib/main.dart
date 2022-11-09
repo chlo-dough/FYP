@@ -117,8 +117,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'ELK': ElkWidget(),
-      'Logs': LogsWidget(),
+      'History': HistoryWidget(),
       'Plot': PlotWidget(),
       'Settings': SettingsWidget(),
     };
@@ -144,14 +143,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.format_list_bulleted_rounded,
-              size: 24,
-            ),
-            label: 'Analytics',
             tooltip: '',
           ),
           BottomNavigationBarItem(

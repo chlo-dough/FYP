@@ -119,27 +119,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
-              name: 'ELK',
-              path: 'elk',
-              builder: (context, params) =>
-                  params.isEmpty ? NavBarPage(initialPage: 'ELK') : ElkWidget(),
-            ),
-            FFRoute(
-              name: 'Logs',
-              path: 'logs',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Logs')
-                  : LogsWidget(),
-            ),
-            FFRoute(
-              name: 'Log-Singular',
-              path: 'logSingular',
+              name: 'DetailedAlert',
+              path: 'detailedAlert',
               asyncParams: {
                 'logReceive': getDoc('users', UsersRecord.serializer),
               },
-              builder: (context, params) => LogSingularWidget(
+              builder: (context, params) => DetailedAlertWidget(
                 logReceive: params.getParam('logReceive', ParamType.Document),
               ),
+            ),
+            FFRoute(
+              name: 'History',
+              path: 'history',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'History')
+                  : HistoryWidget(),
             ),
             FFRoute(
               name: 'Plot',
@@ -195,11 +189,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'lograte',
               path: 'lograte',
               builder: (context, params) => LograteWidget(),
-            ),
-            FFRoute(
-              name: 'dummychart',
-              path: 'dummychart',
-              builder: (context, params) => DummychartWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
