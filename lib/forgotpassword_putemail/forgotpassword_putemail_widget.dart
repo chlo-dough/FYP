@@ -72,21 +72,11 @@ class _ForgotpasswordPutemailWidgetState
                           },
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'Back',
-                          style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                              ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                   child: Text(
                     'Forgot Your Password?',
                     style: FlutterFlowTheme.of(context).title1.override(

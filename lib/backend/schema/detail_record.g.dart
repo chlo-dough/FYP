@@ -1,52 +1,44 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'dummy_alert_record.dart';
+part of 'detail_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<DummyAlertRecord> _$dummyAlertRecordSerializer =
-    new _$DummyAlertRecordSerializer();
+Serializer<DetailRecord> _$detailRecordSerializer =
+    new _$DetailRecordSerializer();
 
-class _$DummyAlertRecordSerializer
-    implements StructuredSerializer<DummyAlertRecord> {
+class _$DetailRecordSerializer implements StructuredSerializer<DetailRecord> {
   @override
-  final Iterable<Type> types = const [DummyAlertRecord, _$DummyAlertRecord];
+  final Iterable<Type> types = const [DetailRecord, _$DetailRecord];
   @override
-  final String wireName = 'DummyAlertRecord';
+  final String wireName = 'DetailRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, DummyAlertRecord object,
+  Iterable<Object?> serialize(Serializers serializers, DetailRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.timeStamp;
+    value = object.timestamp;
     if (value != null) {
       result
-        ..add('TimeStamp')
+        ..add('timestamp')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.severity;
+    value = object.source;
     if (value != null) {
       result
-        ..add('Severity')
+        ..add('source')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.alertScale;
+    if (value != null) {
+      result
+        ..add('alertScale')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.sourceIP;
-    if (value != null) {
-      result
-        ..add('SourceIP')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.region;
-    if (value != null) {
-      result
-        ..add('Region')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
     }
     value = object.isFlagged;
     if (value != null) {
@@ -67,10 +59,10 @@ class _$DummyAlertRecordSerializer
   }
 
   @override
-  DummyAlertRecord deserialize(
+  DetailRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new DummyAlertRecordBuilder();
+    final result = new DetailRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -78,21 +70,17 @@ class _$DummyAlertRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'TimeStamp':
-          result.timeStamp = serializers.deserialize(value,
+        case 'timestamp':
+          result.timestamp = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
-        case 'Severity':
-          result.severity = serializers.deserialize(value,
+        case 'source':
+          result.source = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'alertScale':
+          result.alertScale = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
-          break;
-        case 'SourceIP':
-          result.sourceIP = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'Region':
-          result.region = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
           break;
         case 'isFlagged':
           result.isFlagged = serializers.deserialize(value,
@@ -111,49 +99,43 @@ class _$DummyAlertRecordSerializer
   }
 }
 
-class _$DummyAlertRecord extends DummyAlertRecord {
+class _$DetailRecord extends DetailRecord {
   @override
-  final DateTime? timeStamp;
+  final DateTime? timestamp;
   @override
-  final int? severity;
+  final String? source;
   @override
-  final String? sourceIP;
-  @override
-  final String? region;
+  final int? alertScale;
   @override
   final bool? isFlagged;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$DummyAlertRecord(
-          [void Function(DummyAlertRecordBuilder)? updates]) =>
-      (new DummyAlertRecordBuilder()..update(updates))._build();
+  factory _$DetailRecord([void Function(DetailRecordBuilder)? updates]) =>
+      (new DetailRecordBuilder()..update(updates))._build();
 
-  _$DummyAlertRecord._(
-      {this.timeStamp,
-      this.severity,
-      this.sourceIP,
-      this.region,
+  _$DetailRecord._(
+      {this.timestamp,
+      this.source,
+      this.alertScale,
       this.isFlagged,
       this.ffRef})
       : super._();
 
   @override
-  DummyAlertRecord rebuild(void Function(DummyAlertRecordBuilder) updates) =>
+  DetailRecord rebuild(void Function(DetailRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DummyAlertRecordBuilder toBuilder() =>
-      new DummyAlertRecordBuilder()..replace(this);
+  DetailRecordBuilder toBuilder() => new DetailRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is DummyAlertRecord &&
-        timeStamp == other.timeStamp &&
-        severity == other.severity &&
-        sourceIP == other.sourceIP &&
-        region == other.region &&
+    return other is DetailRecord &&
+        timestamp == other.timestamp &&
+        source == other.source &&
+        alertScale == other.alertScale &&
         isFlagged == other.isFlagged &&
         ffRef == other.ffRef;
   }
@@ -162,46 +144,39 @@ class _$DummyAlertRecord extends DummyAlertRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc($jc($jc(0, timeStamp.hashCode), severity.hashCode),
-                    sourceIP.hashCode),
-                region.hashCode),
+            $jc($jc($jc(0, timestamp.hashCode), source.hashCode),
+                alertScale.hashCode),
             isFlagged.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'DummyAlertRecord')
-          ..add('timeStamp', timeStamp)
-          ..add('severity', severity)
-          ..add('sourceIP', sourceIP)
-          ..add('region', region)
+    return (newBuiltValueToStringHelper(r'DetailRecord')
+          ..add('timestamp', timestamp)
+          ..add('source', source)
+          ..add('alertScale', alertScale)
           ..add('isFlagged', isFlagged)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class DummyAlertRecordBuilder
-    implements Builder<DummyAlertRecord, DummyAlertRecordBuilder> {
-  _$DummyAlertRecord? _$v;
+class DetailRecordBuilder
+    implements Builder<DetailRecord, DetailRecordBuilder> {
+  _$DetailRecord? _$v;
 
-  DateTime? _timeStamp;
-  DateTime? get timeStamp => _$this._timeStamp;
-  set timeStamp(DateTime? timeStamp) => _$this._timeStamp = timeStamp;
+  DateTime? _timestamp;
+  DateTime? get timestamp => _$this._timestamp;
+  set timestamp(DateTime? timestamp) => _$this._timestamp = timestamp;
 
-  int? _severity;
-  int? get severity => _$this._severity;
-  set severity(int? severity) => _$this._severity = severity;
+  String? _source;
+  String? get source => _$this._source;
+  set source(String? source) => _$this._source = source;
 
-  String? _sourceIP;
-  String? get sourceIP => _$this._sourceIP;
-  set sourceIP(String? sourceIP) => _$this._sourceIP = sourceIP;
-
-  String? _region;
-  String? get region => _$this._region;
-  set region(String? region) => _$this._region = region;
+  int? _alertScale;
+  int? get alertScale => _$this._alertScale;
+  set alertScale(int? alertScale) => _$this._alertScale = alertScale;
 
   bool? _isFlagged;
   bool? get isFlagged => _$this._isFlagged;
@@ -211,17 +186,16 @@ class DummyAlertRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  DummyAlertRecordBuilder() {
-    DummyAlertRecord._initializeBuilder(this);
+  DetailRecordBuilder() {
+    DetailRecord._initializeBuilder(this);
   }
 
-  DummyAlertRecordBuilder get _$this {
+  DetailRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _timeStamp = $v.timeStamp;
-      _severity = $v.severity;
-      _sourceIP = $v.sourceIP;
-      _region = $v.region;
+      _timestamp = $v.timestamp;
+      _source = $v.source;
+      _alertScale = $v.alertScale;
       _isFlagged = $v.isFlagged;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -230,26 +204,25 @@ class DummyAlertRecordBuilder
   }
 
   @override
-  void replace(DummyAlertRecord other) {
+  void replace(DetailRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$DummyAlertRecord;
+    _$v = other as _$DetailRecord;
   }
 
   @override
-  void update(void Function(DummyAlertRecordBuilder)? updates) {
+  void update(void Function(DetailRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  DummyAlertRecord build() => _build();
+  DetailRecord build() => _build();
 
-  _$DummyAlertRecord _build() {
+  _$DetailRecord _build() {
     final _$result = _$v ??
-        new _$DummyAlertRecord._(
-            timeStamp: timeStamp,
-            severity: severity,
-            sourceIP: sourceIP,
-            region: region,
+        new _$DetailRecord._(
+            timestamp: timestamp,
+            source: source,
+            alertScale: alertScale,
             isFlagged: isFlagged,
             ffRef: ffRef);
     replace(_$result);

@@ -40,7 +40,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).lineColor,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100),
         child: AppBar(
@@ -73,16 +73,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           onPressed: () async {
                             logFirebaseEvent('IconButton_navigate_to');
 
-                            context.pushNamed(
-                              'startpage',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType:
-                                      PageTransitionType.leftToRight,
-                                ),
-                              },
-                            );
+                            context.pushNamed('startpage');
                           },
                         ),
                       ),
@@ -95,7 +86,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     'Login',
                     style: FlutterFlowTheme.of(context).title1.override(
                           fontFamily: 'Poppins',
-                          fontSize: 32,
+                          fontSize: 26,
                         ),
                   ),
                 ),
@@ -112,7 +103,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(

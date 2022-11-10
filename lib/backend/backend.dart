@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
-import 'schema/dummy_alert_record.dart';
+import 'schema/detail_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -14,7 +14,7 @@ export 'schema/index.dart';
 export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
-export 'schema/dummy_alert_record.dart';
+export 'schema/detail_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -58,42 +58,45 @@ Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query DummyAlertRecords (as a Stream and as a Future).
-Stream<List<DummyAlertRecord>> queryDummyAlertRecord({
+/// Functions to query DetailRecords (as a Stream and as a Future).
+Stream<List<DetailRecord>> queryDetailRecord({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      DummyAlertRecord.collection,
-      DummyAlertRecord.serializer,
+      DetailRecord.collection(parent),
+      DetailRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<DummyAlertRecord>> queryDummyAlertRecordOnce({
+Future<List<DetailRecord>> queryDetailRecordOnce({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      DummyAlertRecord.collection,
-      DummyAlertRecord.serializer,
+      DetailRecord.collection(parent),
+      DetailRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<DummyAlertRecord>> queryDummyAlertRecordPage({
+Future<FFFirestorePage<DetailRecord>> queryDetailRecordPage({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
 }) =>
     queryCollectionPage(
-      DummyAlertRecord.collection,
-      DummyAlertRecord.serializer,
+      DetailRecord.collection(parent),
+      DetailRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

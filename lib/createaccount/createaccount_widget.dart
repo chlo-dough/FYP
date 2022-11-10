@@ -83,26 +83,16 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                           },
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                        child: Text(
-                          'Back',
-                          style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                              ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                   child: Text(
                     'Create Account',
                     style: FlutterFlowTheme.of(context).title1.override(
                           fontFamily: 'Poppins',
-                          fontSize: 32,
+                          fontSize: 26,
                         ),
                   ),
                 ),
@@ -399,9 +389,8 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
 
                 logFirebaseEvent('Button-Login_auth');
                 await sendEmailVerification();
-                logFirebaseEvent('Button-Login_navigate_to');
 
-                context.pushNamedAuth('setupprofile', mounted);
+                context.goNamedAuth('Home', mounted);
               },
               text: 'Create Account',
               options: FFButtonOptions(

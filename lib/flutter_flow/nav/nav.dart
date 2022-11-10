@@ -107,33 +107,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ForgotpasswordPutemailWidget(),
             ),
             FFRoute(
-              name: 'forgotpassword-resetpw',
-              path: 'forgotpasswordResetpw',
-              builder: (context, params) => ForgotpasswordResetpwWidget(),
-            ),
-            FFRoute(
               name: 'Home',
               path: 'home',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Home')
                   : HomeWidget(),
-            ),
-            FFRoute(
-              name: 'DetailedAlert',
-              path: 'detailedAlert',
-              asyncParams: {
-                'logReceive': getDoc('users', UsersRecord.serializer),
-              },
-              builder: (context, params) => DetailedAlertWidget(
-                logReceive: params.getParam('logReceive', ParamType.Document),
-              ),
-            ),
-            FFRoute(
-              name: 'History',
-              path: 'history',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'History')
-                  : HistoryWidget(),
             ),
             FFRoute(
               name: 'Plot',
@@ -171,11 +149,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   SettingAccountChangePasswordWidget(),
             ),
             FFRoute(
-              name: 'Settings-IDS-IP',
-              path: 'settingsIDSIP',
-              builder: (context, params) => SettingsIDSIPWidget(),
-            ),
-            FFRoute(
               name: 'Setting-Notifications',
               path: 'Setting-Notificatiton-Reworking',
               builder: (context, params) => SettingNotificationsWidget(),
@@ -186,9 +159,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingAboutWidget(),
             ),
             FFRoute(
-              name: 'lograte',
-              path: 'lograte',
-              builder: (context, params) => LograteWidget(),
+              name: 'HomePage',
+              path: 'homePage',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomePage')
+                  : HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'alertdetail',
+              path: 'alertdetail',
+              builder: (context, params) => AlertdetailWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

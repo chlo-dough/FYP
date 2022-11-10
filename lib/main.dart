@@ -117,9 +117,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Home': HomeWidget(),
-      'History': HistoryWidget(),
       'Plot': PlotWidget(),
       'Settings': SettingsWidget(),
+      'HomePage': HomePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -147,14 +147,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.format_list_bulleted_rounded,
-              size: 24,
-            ),
-            label: 'Logs',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.insert_chart_outlined,
               size: 24,
             ),
@@ -167,6 +159,18 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Settings',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.dashboard_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.dashboard_rounded,
+              size: 32,
+            ),
+            label: '__',
             tooltip: '',
           )
         ],

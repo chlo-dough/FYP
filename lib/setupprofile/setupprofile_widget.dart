@@ -93,12 +93,12 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24, 10, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                   child: Text(
                     'Set Up Profile',
                     style: FlutterFlowTheme.of(context).title1.override(
                           fontFamily: 'Poppins',
-                          fontSize: 32,
+                          fontSize: 26,
                         ),
                   ),
                 ),
@@ -150,7 +150,7 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: AuthUserStreamWidget(
                       child: InkWell(
-                        onLongPress: () async {
+                        onTap: () async {
                           logFirebaseEvent('CircleImage_expand_image');
                           await Navigator.push(
                             context,
@@ -238,6 +238,13 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                         return;
                       }
                     }
+
+                    logFirebaseEvent('Button_backend_call');
+
+                    final usersUpdateData = createUsersRecordData(
+                      photoUrl: uploadedFileUrl,
+                    );
+                    await currentUserReference!.update(usersUpdateData);
                   },
                   text: 'Change Photo',
                   options: FFButtonOptions(
