@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'detail_record.dart';
+part of 'alerts_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<DetailRecord> _$detailRecordSerializer =
-    new _$DetailRecordSerializer();
+Serializer<AlertsRecord> _$alertsRecordSerializer =
+    new _$AlertsRecordSerializer();
 
-class _$DetailRecordSerializer implements StructuredSerializer<DetailRecord> {
+class _$AlertsRecordSerializer implements StructuredSerializer<AlertsRecord> {
   @override
-  final Iterable<Type> types = const [DetailRecord, _$DetailRecord];
+  final Iterable<Type> types = const [AlertsRecord, _$AlertsRecord];
   @override
-  final String wireName = 'DetailRecord';
+  final String wireName = 'AlertsRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, DetailRecord object,
+  Iterable<Object?> serialize(Serializers serializers, AlertsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
@@ -27,18 +27,18 @@ class _$DetailRecordSerializer implements StructuredSerializer<DetailRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
+    value = object.priority;
+    if (value != null) {
+      result
+        ..add('priority')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.source;
     if (value != null) {
       result
         ..add('source')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
-    }
-    value = object.alertScale;
-    if (value != null) {
-      result
-        ..add('alertScale')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.isFlagged;
     if (value != null) {
@@ -59,10 +59,10 @@ class _$DetailRecordSerializer implements StructuredSerializer<DetailRecord> {
   }
 
   @override
-  DetailRecord deserialize(
+  AlertsRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new DetailRecordBuilder();
+    final result = new AlertsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -74,13 +74,13 @@ class _$DetailRecordSerializer implements StructuredSerializer<DetailRecord> {
           result.timestamp = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
+        case 'priority':
+          result.priority = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
         case 'source':
           result.source = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
-          break;
-        case 'alertScale':
-          result.alertScale = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
           break;
         case 'isFlagged':
           result.isFlagged = serializers.deserialize(value,
@@ -99,43 +99,39 @@ class _$DetailRecordSerializer implements StructuredSerializer<DetailRecord> {
   }
 }
 
-class _$DetailRecord extends DetailRecord {
+class _$AlertsRecord extends AlertsRecord {
   @override
   final DateTime? timestamp;
   @override
-  final String? source;
+  final int? priority;
   @override
-  final int? alertScale;
+  final String? source;
   @override
   final bool? isFlagged;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$DetailRecord([void Function(DetailRecordBuilder)? updates]) =>
-      (new DetailRecordBuilder()..update(updates))._build();
+  factory _$AlertsRecord([void Function(AlertsRecordBuilder)? updates]) =>
+      (new AlertsRecordBuilder()..update(updates))._build();
 
-  _$DetailRecord._(
-      {this.timestamp,
-      this.source,
-      this.alertScale,
-      this.isFlagged,
-      this.ffRef})
+  _$AlertsRecord._(
+      {this.timestamp, this.priority, this.source, this.isFlagged, this.ffRef})
       : super._();
 
   @override
-  DetailRecord rebuild(void Function(DetailRecordBuilder) updates) =>
+  AlertsRecord rebuild(void Function(AlertsRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DetailRecordBuilder toBuilder() => new DetailRecordBuilder()..replace(this);
+  AlertsRecordBuilder toBuilder() => new AlertsRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is DetailRecord &&
+    return other is AlertsRecord &&
         timestamp == other.timestamp &&
+        priority == other.priority &&
         source == other.source &&
-        alertScale == other.alertScale &&
         isFlagged == other.isFlagged &&
         ffRef == other.ffRef;
   }
@@ -144,39 +140,39 @@ class _$DetailRecord extends DetailRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, timestamp.hashCode), source.hashCode),
-                alertScale.hashCode),
+            $jc($jc($jc(0, timestamp.hashCode), priority.hashCode),
+                source.hashCode),
             isFlagged.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'DetailRecord')
+    return (newBuiltValueToStringHelper(r'AlertsRecord')
           ..add('timestamp', timestamp)
+          ..add('priority', priority)
           ..add('source', source)
-          ..add('alertScale', alertScale)
           ..add('isFlagged', isFlagged)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class DetailRecordBuilder
-    implements Builder<DetailRecord, DetailRecordBuilder> {
-  _$DetailRecord? _$v;
+class AlertsRecordBuilder
+    implements Builder<AlertsRecord, AlertsRecordBuilder> {
+  _$AlertsRecord? _$v;
 
   DateTime? _timestamp;
   DateTime? get timestamp => _$this._timestamp;
   set timestamp(DateTime? timestamp) => _$this._timestamp = timestamp;
 
+  int? _priority;
+  int? get priority => _$this._priority;
+  set priority(int? priority) => _$this._priority = priority;
+
   String? _source;
   String? get source => _$this._source;
   set source(String? source) => _$this._source = source;
-
-  int? _alertScale;
-  int? get alertScale => _$this._alertScale;
-  set alertScale(int? alertScale) => _$this._alertScale = alertScale;
 
   bool? _isFlagged;
   bool? get isFlagged => _$this._isFlagged;
@@ -186,16 +182,16 @@ class DetailRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  DetailRecordBuilder() {
-    DetailRecord._initializeBuilder(this);
+  AlertsRecordBuilder() {
+    AlertsRecord._initializeBuilder(this);
   }
 
-  DetailRecordBuilder get _$this {
+  AlertsRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _timestamp = $v.timestamp;
+      _priority = $v.priority;
       _source = $v.source;
-      _alertScale = $v.alertScale;
       _isFlagged = $v.isFlagged;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -204,25 +200,25 @@ class DetailRecordBuilder
   }
 
   @override
-  void replace(DetailRecord other) {
+  void replace(AlertsRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$DetailRecord;
+    _$v = other as _$AlertsRecord;
   }
 
   @override
-  void update(void Function(DetailRecordBuilder)? updates) {
+  void update(void Function(AlertsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  DetailRecord build() => _build();
+  AlertsRecord build() => _build();
 
-  _$DetailRecord _build() {
+  _$AlertsRecord _build() {
     final _$result = _$v ??
-        new _$DetailRecord._(
+        new _$AlertsRecord._(
             timestamp: timestamp,
+            priority: priority,
             source: source,
-            alertScale: alertScale,
             isFlagged: isFlagged,
             ffRef: ffRef);
     replace(_$result);

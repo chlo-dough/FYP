@@ -107,11 +107,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ForgotpasswordPutemailWidget(),
             ),
             FFRoute(
-              name: 'Home',
-              path: 'home',
+              name: 'HomePage',
+              path: 'homePage',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Home')
-                  : HomeWidget(),
+                  ? NavBarPage(initialPage: 'HomePage')
+                  : HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'alertdetail',
+              path: 'alertdetail',
+              builder: (context, params) => AlertdetailWidget(
+                alert: params.getParam('alert', ParamType.int),
+                ipAddress: params.getParam('ipAddress', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'Plot',
@@ -157,18 +165,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Setting-About',
               path: 'Setting-About',
               builder: (context, params) => SettingAboutWidget(),
-            ),
-            FFRoute(
-              name: 'HomePage',
-              path: 'homePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomePage')
-                  : HomePageWidget(),
-            ),
-            FFRoute(
-              name: 'alertdetail',
-              path: 'alertdetail',
-              builder: (context, params) => AlertdetailWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

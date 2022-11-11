@@ -6,7 +6,8 @@ export 'accountcreated/accountcreated_widget.dart' show AccountcreatedWidget;
 export 'setupprofile/setupprofile_widget.dart' show SetupprofileWidget;
 export 'forgotpassword_putemail/forgotpassword_putemail_widget.dart'
     show ForgotpasswordPutemailWidget;
-export 'home/home_widget.dart' show HomeWidget;
+export 'home_page/home_page_widget.dart' show HomePageWidget;
+export 'alertdetail/alertdetail_widget.dart' show AlertdetailWidget;
 export 'plot/plot_widget.dart' show PlotWidget;
 export 'settings/settings_widget.dart' show SettingsWidget;
 export 'settings_account/settings_account_widget.dart'
@@ -19,5 +20,3 @@ export 'setting_account_change_password/setting_account_change_password_widget.d
 export 'setting_notifications/setting_notifications_widget.dart'
     show SettingNotificationsWidget;
 export 'setting_about/setting_about_widget.dart' show SettingAboutWidget;
-export 'home_page/home_page_widget.dart' show HomePageWidget;
-export 'alertdetail/alertdetail_widget.dart' show AlertdetailWidget;

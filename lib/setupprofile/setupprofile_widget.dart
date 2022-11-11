@@ -172,8 +172,8 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                           tag: currentUserPhoto,
                           transitionOnUserGestures: true,
                           child: Container(
-                            width: 90,
-                            height: 90,
+                            width: 100,
+                            height: 100,
                             clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
@@ -345,7 +345,7 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                 await currentUserReference!.update(usersUpdateData);
                 logFirebaseEvent('Button-SaveAndContinue_navigate_to');
 
-                context.pushNamed('Home');
+                context.pushNamed('HomePage');
               },
               text: 'Save and Continue',
               options: FFButtonOptions(

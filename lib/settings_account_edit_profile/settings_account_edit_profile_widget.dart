@@ -31,7 +31,7 @@ class _SettingsAccountEditProfileWidgetState
   @override
   void initState() {
     super.initState();
-    yourNameController = TextEditingController();
+    yourNameController = TextEditingController(text: currentUserDisplayName);
   }
 
   @override
@@ -119,8 +119,8 @@ class _SettingsAccountEditProfileWidgetState
                             tag: 'circleImageTag',
                             transitionOnUserGestures: true,
                             child: Container(
-                              width: 90,
-                              height: 90,
+                              width: 100,
+                              height: 100,
                               clipBehavior: Clip.antiAlias,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
@@ -212,47 +212,50 @@ class _SettingsAccountEditProfileWidgetState
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
-                child: TextFormField(
-                  controller: yourNameController,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: 'Your Name',
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                    hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        width: 2,
+                child: AuthUserStreamWidget(
+                  child: TextFormField(
+                    controller: yourNameController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Your Name',
+                      labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                      hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        width: 2,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0x00000000),
-                        width: 2,
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0x00000000),
-                        width: 2,
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      borderRadius: BorderRadius.circular(8),
+                      filled: true,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      contentPadding:
+                          EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                     ),
-                    filled: true,
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                    contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                    style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ),
               Padding(

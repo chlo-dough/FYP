@@ -7,7 +7,8 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(DetailRecord.serializer)
+      ..add(AlertsRecord.serializer)
+      ..add(LogsRecord.serializer)
       ..add(UsersRecord.serializer))
     .build();
 

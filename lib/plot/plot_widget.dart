@@ -44,7 +44,7 @@ class _PlotWidgetState extends State<PlotWidget> {
           onPressed: () async {
             logFirebaseEvent('IconButton_navigate_to');
 
-            context.pushNamed('Home');
+            context.pushNamed('HomePage');
           },
         ),
         title: Text(

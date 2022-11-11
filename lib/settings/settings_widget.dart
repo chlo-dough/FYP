@@ -38,7 +38,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           onPressed: () async {
             logFirebaseEvent('IconButton_navigate_to');
 
-            context.pushNamed('Home');
+            context.pushNamed('HomePage');
           },
         ),
         title: Text(

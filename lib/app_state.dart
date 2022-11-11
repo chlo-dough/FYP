@@ -14,11 +14,28 @@ class FFAppState {
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
+    _alertsHandledToday =
+        prefs.getInt('ff_alertsHandledToday') ?? _alertsHandledToday;
+    _avgLogs = prefs.getInt('ff_avgLogs') ?? _avgLogs;
   }
 
   late SharedPreferences prefs;
 
   String test = 'https://demo.elastic.co/app/kibana_overview#/';
+
+  int _alertsHandledToday = 0;
+  int get alertsHandledToday => _alertsHandledToday;
+  set alertsHandledToday(int _value) {
+    _alertsHandledToday = _value;
+    prefs.setInt('ff_alertsHandledToday', _value);
+  }
+
+  int _avgLogs = 0;
+  int get avgLogs => _avgLogs;
+  set avgLogs(int _value) {
+    _avgLogs = _value;
+    prefs.setInt('ff_avgLogs', _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

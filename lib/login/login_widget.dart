@@ -280,7 +280,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     if (loggedIn) {
                       logFirebaseEvent('Button-Login_navigate_to');
 
-                      context.pushNamedAuth('Home', mounted);
+                      context.pushNamedAuth('HomePage', mounted);
                     } else {
                       logFirebaseEvent('Button-Login_navigate_back');
                       context.pop();

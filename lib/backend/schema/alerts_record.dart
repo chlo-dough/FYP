@@ -4,17 +4,17 @@ import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
 
-part 'detail_record.g.dart';
+part 'alerts_record.g.dart';
 
-abstract class DetailRecord
-    implements Built<DetailRecord, DetailRecordBuilder> {
-  static Serializer<DetailRecord> get serializer => _$detailRecordSerializer;
+abstract class AlertsRecord
+    implements Built<AlertsRecord, AlertsRecordBuilder> {
+  static Serializer<AlertsRecord> get serializer => _$alertsRecordSerializer;
 
   DateTime? get timestamp;
 
-  String? get source;
+  int? get priority;
 
-  int? get alertScale;
+  String? get source;
 
   bool? get isFlagged;
 
@@ -24,50 +24,50 @@ abstract class DetailRecord
 
   DocumentReference get parentReference => reference.parent.parent!;
 
-  static void _initializeBuilder(DetailRecordBuilder builder) => builder
+  static void _initializeBuilder(AlertsRecordBuilder builder) => builder
+    ..priority = 0
     ..source = ''
-    ..alertScale = 0
     ..isFlagged = false;
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
       parent != null
-          ? parent.collection('detail')
-          : FirebaseFirestore.instance.collectionGroup('detail');
+          ? parent.collection('alerts')
+          : FirebaseFirestore.instance.collectionGroup('alerts');
 
   static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('detail').doc();
+      parent.collection('alerts').doc();
 
-  static Stream<DetailRecord> getDocument(DocumentReference ref) => ref
+  static Stream<AlertsRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  static Future<DetailRecord> getDocumentOnce(DocumentReference ref) => ref
+  static Future<AlertsRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
-  DetailRecord._();
-  factory DetailRecord([void Function(DetailRecordBuilder) updates]) =
-      _$DetailRecord;
+  AlertsRecord._();
+  factory AlertsRecord([void Function(AlertsRecordBuilder) updates]) =
+      _$AlertsRecord;
 
-  static DetailRecord getDocumentFromData(
+  static AlertsRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
-Map<String, dynamic> createDetailRecordData({
+Map<String, dynamic> createAlertsRecordData({
   DateTime? timestamp,
+  int? priority,
   String? source,
-  int? alertScale,
   bool? isFlagged,
 }) {
   final firestoreData = serializers.toFirestore(
-    DetailRecord.serializer,
-    DetailRecord(
-      (d) => d
+    AlertsRecord.serializer,
+    AlertsRecord(
+      (a) => a
         ..timestamp = timestamp
+        ..priority = priority
         ..source = source
-        ..alertScale = alertScale
         ..isFlagged = isFlagged,
     ),
   );

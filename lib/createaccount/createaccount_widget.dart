@@ -390,7 +390,7 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                 logFirebaseEvent('Button-Login_auth');
                 await sendEmailVerification();
 
-                context.goNamedAuth('Home', mounted);
+                context.goNamedAuth('HomePage', mounted);
               },
               text: 'Create Account',
               options: FFButtonOptions(

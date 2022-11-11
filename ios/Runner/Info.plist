@@ -61,6 +61,8 @@
       <string>Permit the applciation to use Bluetooth Services</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
       <string>Permit the application to access and trace location of device</string>
+	<key>NSCalendarsUsageDescription</key>
+      <string>Permit the applciation to use local calendar </string>
 
 
 	<key>UILaunchStoryboardName</key>

@@ -1,10 +1,12 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SettingsAccountWidget extends StatefulWidget {
   const SettingsAccountWidget({Key? key}) : super(key: key);
@@ -62,22 +64,41 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://picsum.photos/seed/339/600',
-                        width: 80,
-                        height: 80,
-                        fit: BoxFit.cover,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                  child: InkWell(
+                    onLongPress: () async {
+                      logFirebaseEvent('CircleImage_expand_image');
+                      await Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: FlutterFlowExpandedImageView(
+                            image: Image.network(
+                              'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
+                              fit: BoxFit.contain,
+                            ),
+                            allowRotation: false,
+                            tag: 'circleImageTag',
+                            useHeroAnimation: true,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Hero(
+                      tag: 'circleImageTag',
+                      transitionOnUserGestures: true,
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.network(
+                          'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
+                          fit: BoxFit.fitWidth,
+                        ),
                       ),
                     ),
                   ),
