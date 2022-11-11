@@ -413,52 +413,82 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             return Container(
                               width: 300,
                               height: 200,
-                              child: FlutterFlowLineChart(
-                                data: [
-                                  FFLineChartData(
-                                    xData: chartLogsRecordList
-                                        .map((d) => d.timestamp)
-                                        .toList(),
-                                    yData: chartLogsRecordList
-                                        .map((d) => d.frequency)
-                                        .toList(),
-                                    settings: LineChartBarData(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      barWidth: 3,
-                                      belowBarData: BarAreaData(
-                                        show: true,
-                                        color: Color(0xFFDEDEEA),
-                                      ),
+                              child: Stack(
+                                children: [
+                                  FlutterFlowLineChart(
+                                    data: [
+                                      FFLineChartData(
+                                        xData: chartLogsRecordList
+                                            .map((d) => d.timestamp)
+                                            .toList(),
+                                        yData: chartLogsRecordList
+                                            .map((d) => d.frequency)
+                                            .toList(),
+                                        settings: LineChartBarData(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          barWidth: 3,
+                                          belowBarData: BarAreaData(
+                                            show: true,
+                                            color: Color(0xFFDEDEEA),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                    chartStylingInfo: ChartStylingInfo(
+                                      enableTooltip: true,
+                                      tooltipBackgroundColor: Colors.red,
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                      showBorder: false,
                                     ),
-                                  )
+                                    axisBounds: AxisBounds(),
+                                    xAxisLabelInfo: AxisLabelInfo(
+                                      title: 'Time',
+                                      titleTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .bodyText2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 9,
+                                              ),
+                                      showLabels: true,
+                                      labelTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .bodyText2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 9,
+                                              ),
+                                      labelInterval: 10,
+                                    ),
+                                    yAxisLabelInfo: AxisLabelInfo(),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(1, 1),
+                                    child: FlutterFlowChartLegendWidget(
+                                      entries: [
+                                        LegendEntry(
+                                            FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            'Traffic'),
+                                      ],
+                                      width: 100,
+                                      height: 50,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyText1,
+                                      textPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              5, 0, 0, 0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 5, 0),
+                                      borderWidth: 1,
+                                      borderColor: Colors.black,
+                                      indicatorSize: 10,
+                                    ),
+                                  ),
                                 ],
-                                chartStylingInfo: ChartStylingInfo(
-                                  enableTooltip: true,
-                                  tooltipBackgroundColor: Colors.red,
-                                  backgroundColor: FlutterFlowTheme.of(context)
-                                      .primaryBtnText,
-                                  showBorder: false,
-                                ),
-                                axisBounds: AxisBounds(),
-                                xAxisLabelInfo: AxisLabelInfo(
-                                  title: 'Time',
-                                  titleTextStyle: FlutterFlowTheme.of(context)
-                                      .bodyText2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 9,
-                                      ),
-                                  showLabels: true,
-                                  labelTextStyle: FlutterFlowTheme.of(context)
-                                      .bodyText2
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 9,
-                                      ),
-                                  labelInterval: 10,
-                                ),
-                                yAxisLabelInfo: AxisLabelInfo(),
                               ),
                             );
                           },

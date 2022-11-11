@@ -389,8 +389,34 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
 
                 logFirebaseEvent('Button-Login_auth');
                 await sendEmailVerification();
+                if (currentUserEmailVerified) {
+                  logFirebaseEvent('Button-Login_navigate_to');
 
-                context.goNamedAuth('HomePage', mounted);
+                  context.pushNamedAuth(
+                    'setupprofile',
+                    mounted,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
+                } else {
+                  logFirebaseEvent('Button-Login_navigate_to');
+
+                  context.pushNamedAuth(
+                    'accountcreated',
+                    mounted,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                      ),
+                    },
+                  );
+                }
               },
               text: 'Create Account',
               options: FFButtonOptions(
