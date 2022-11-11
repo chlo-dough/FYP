@@ -107,6 +107,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ForgotpasswordPutemailWidget(),
             ),
             FFRoute(
+              name: 'displayDummy',
+              path: 'displayDummy',
+              builder: (context, params) => DisplayDummyWidget(),
+            ),
+            FFRoute(
               name: 'HomePage',
               path: 'homePage',
               builder: (context, params) => params.isEmpty

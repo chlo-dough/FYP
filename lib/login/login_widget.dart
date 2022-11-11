@@ -1,5 +1,3 @@
-import '../auth/auth_util.dart';
-import '../auth/firebase_user_provider.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -265,26 +263,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    logFirebaseEvent('Button-Login_auth');
-                    GoRouter.of(context).prepareAuthEvent();
+                    logFirebaseEvent('Button-Login_navigate_to');
 
-                    final user = await signInWithEmail(
-                      context,
-                      emailController!.text,
-                      passwordController!.text,
-                    );
-                    if (user == null) {
-                      return;
-                    }
-
-                    if (loggedIn) {
-                      logFirebaseEvent('Button-Login_navigate_to');
-
-                      context.pushNamedAuth('HomePage', mounted);
-                    } else {
-                      logFirebaseEvent('Button-Login_navigate_back');
-                      context.pop();
-                    }
+                    context.pushNamed('displayDummy');
                   },
                   text: 'Login',
                   options: FFButtonOptions(

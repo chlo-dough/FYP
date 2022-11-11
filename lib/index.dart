@@ -6,6 +6,7 @@ export 'accountcreated/accountcreated_widget.dart' show AccountcreatedWidget;
 export 'setupprofile/setupprofile_widget.dart' show SetupprofileWidget;
 export 'forgotpassword_putemail/forgotpassword_putemail_widget.dart'
     show ForgotpasswordPutemailWidget;
+export 'display_dummy/display_dummy_widget.dart' show DisplayDummyWidget;
 export 'home_page/home_page_widget.dart' show HomePageWidget;
 export 'alertdetail/alertdetail_widget.dart' show AlertdetailWidget;
 export 'plot/plot_widget.dart' show PlotWidget;

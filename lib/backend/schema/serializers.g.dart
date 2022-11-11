@@ -8,6 +8,7 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AlertsRecord.serializer)
+      ..add(DummyAlertsRecord.serializer)
       ..add(LogsRecord.serializer)
       ..add(UsersRecord.serializer))
     .build();
