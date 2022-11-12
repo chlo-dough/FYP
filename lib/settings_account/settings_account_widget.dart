@@ -347,7 +347,11 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
                 } else {
                   logFirebaseEvent('Button_navigate_back');
                   context.pop();
+                  return;
                 }
+
+                logFirebaseEvent('Button_update_local_state');
+                setState(() => FFAppState().uidref = '');
               },
               text: 'Log Out',
               options: FFButtonOptions(
@@ -417,7 +421,7 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
               options: FFButtonOptions(
                 width: 200,
                 height: 50,
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: FlutterFlowTheme.of(context).alternate,
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Poppins',
                       color: FlutterFlowTheme.of(context).primaryText,

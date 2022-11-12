@@ -393,6 +393,9 @@ class _CreateaccountWidgetState extends State<CreateaccountWidget> {
                   logFirebaseEvent('Button-Login_navigate_to');
 
                   context.pushNamedAuth('accountcreated', mounted);
+
+                  logFirebaseEvent('Button-Login_update_local_state');
+                  setState(() => FFAppState().uidref = currentUserUid);
                 },
                 text: 'Create Account',
                 options: FFButtonOptions(

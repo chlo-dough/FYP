@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -266,6 +267,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                     logFirebaseEvent('Button-Login_navigate_to');
 
                     context.pushNamed('HomePage');
+
+                    logFirebaseEvent('Button-Login_update_local_state');
+                    setState(() => FFAppState().uidref = currentUserUid);
                   },
                   text: 'Login',
                   options: FFButtonOptions(

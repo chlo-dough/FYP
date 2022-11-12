@@ -1,8 +1,11 @@
+import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_charts.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,11 +19,6 @@ class PlotWidget extends StatefulWidget {
 class _PlotWidgetState extends State<PlotWidget> {
   String? dropDownValue1;
   String? dropDownValue2;
-  String? dropDownValue3;
-  String? dropDownValue4;
-  String? dropDownValue5;
-  String? dropDownValue6;
-  String? dropDownValue7;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -107,11 +105,118 @@ class _PlotWidgetState extends State<PlotWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),
-                                  child: Image.asset(
-                                    'assets/images/chart.png',
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
+                                  child: StreamBuilder<List<LogDataRecord>>(
+                                    stream: queryLogDataRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<LogDataRecord>
+                                          chartLogDataRecordList =
+                                          snapshot.data!;
+                                      return Container(
+                                        width: 300,
+                                        height: 200,
+                                        child: Stack(
+                                          children: [
+                                            FlutterFlowLineChart(
+                                              data: [
+                                                FFLineChartData(
+                                                  xData: List.generate(
+                                                      random_data.randomInteger(
+                                                          0, 0),
+                                                      (index) => random_data
+                                                          .randomDouble(0, 1)),
+                                                  yData: List.generate(
+                                                      random_data.randomInteger(
+                                                          0, 0),
+                                                      (index) => random_data
+                                                          .randomDouble(0, 1)),
+                                                  settings: LineChartBarData(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                    barWidth: 3,
+                                                    belowBarData: BarAreaData(
+                                                      show: true,
+                                                      color: Color(0xFFDEDEEA),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                              chartStylingInfo:
+                                                  ChartStylingInfo(
+                                                enableTooltip: true,
+                                                tooltipBackgroundColor:
+                                                    Colors.red,
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBtnText,
+                                                showBorder: false,
+                                              ),
+                                              axisBounds: AxisBounds(),
+                                              xAxisLabelInfo: AxisLabelInfo(
+                                                title: 'Time',
+                                                titleTextStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 9,
+                                                        ),
+                                                showLabels: true,
+                                                labelTextStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 9,
+                                                        ),
+                                                labelInterval: 10,
+                                              ),
+                                              yAxisLabelInfo: AxisLabelInfo(),
+                                            ),
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(1, 1),
+                                              child:
+                                                  FlutterFlowChartLegendWidget(
+                                                entries: [
+                                                  LegendEntry(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryColor,
+                                                      'Traffic'),
+                                                ],
+                                                width: 100,
+                                                height: 30,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                                textPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(5, 0, 0, 0),
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(5, 0, 5, 0),
+                                                borderColor: Colors.black,
+                                                indicatorSize: 10,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
@@ -138,7 +243,7 @@ class _PlotWidgetState extends State<PlotWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(4, 0, 0, 0),
                                               child: Text(
-                                                'X-Axis:',
+                                                'Time',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1,
@@ -155,7 +260,12 @@ class _PlotWidgetState extends State<PlotWidget> {
                                             children: [
                                               Expanded(
                                                 child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
+                                                  options: [
+                                                    'Yesterday',
+                                                    'Last Week',
+                                                    'Last Month',
+                                                    'Last Year'
+                                                  ],
                                                   onChanged: (val) => setState(
                                                       () =>
                                                           dropDownValue1 = val),
@@ -201,7 +311,7 @@ class _PlotWidgetState extends State<PlotWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(4, 0, 0, 0),
                                               child: Text(
-                                                'X-Axis Minimum:',
+                                                'Traffic',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1,
@@ -218,325 +328,14 @@ class _PlotWidgetState extends State<PlotWidget> {
                                             children: [
                                               Expanded(
                                                 child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
+                                                  options: [
+                                                    'Total Logs',
+                                                    'IP of choice',
+                                                    'Region'
+                                                  ],
                                                   onChanged: (val) => setState(
                                                       () =>
                                                           dropDownValue2 = val),
-                                                  width: 180,
-                                                  height: 50,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.black,
-                                                      ),
-                                                  hintText: 'Please select...',
-                                                  fillColor: Colors.white,
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 0,
-                                                  borderRadius: 0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 4, 12, 4),
-                                                  hidesUnderline: true,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 4),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 0, 0, 0),
-                                              child: Text(
-                                                'X-Axis Maximum:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
-                                                  onChanged: (val) => setState(
-                                                      () =>
-                                                          dropDownValue3 = val),
-                                                  width: 180,
-                                                  height: 50,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.black,
-                                                      ),
-                                                  hintText: 'Please select...',
-                                                  fillColor: Colors.white,
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 0,
-                                                  borderRadius: 0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 4, 12, 4),
-                                                  hidesUnderline: true,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 4),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 0, 0, 0),
-                                              child: Text(
-                                                'Y-Axis:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
-                                                  onChanged: (val) => setState(
-                                                      () =>
-                                                          dropDownValue4 = val),
-                                                  width: 180,
-                                                  height: 50,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.black,
-                                                      ),
-                                                  hintText: 'Please select...',
-                                                  fillColor: Colors.white,
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 0,
-                                                  borderRadius: 0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 4, 12, 4),
-                                                  hidesUnderline: true,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 4),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 0, 0, 0),
-                                              child: Text(
-                                                'Y-Axis Minimum:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
-                                                  onChanged: (val) => setState(
-                                                      () =>
-                                                          dropDownValue5 = val),
-                                                  width: 180,
-                                                  height: 50,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.black,
-                                                      ),
-                                                  hintText: 'Please select...',
-                                                  fillColor: Colors.white,
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 0,
-                                                  borderRadius: 0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 4, 12, 4),
-                                                  hidesUnderline: true,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 4),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 0, 0, 0),
-                                              child: Text(
-                                                'Y-Axis Maximum:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
-                                                  onChanged: (val) => setState(
-                                                      () =>
-                                                          dropDownValue6 = val),
-                                                  width: 180,
-                                                  height: 50,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.black,
-                                                      ),
-                                                  hintText: 'Please select...',
-                                                  fillColor: Colors.white,
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderWidth: 0,
-                                                  borderRadius: 0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 4, 12, 4),
-                                                  hidesUnderline: true,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 4),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(4, 0, 0, 0),
-                                              child: Text(
-                                                'Set Colours:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                child: FlutterFlowDropDown(
-                                                  options: ['Option 1'],
-                                                  onChanged: (val) => setState(
-                                                      () =>
-                                                          dropDownValue7 = val),
                                                   width: 180,
                                                   height: 50,
                                                   textStyle: FlutterFlowTheme

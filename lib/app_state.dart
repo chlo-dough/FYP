@@ -17,6 +17,7 @@ class FFAppState {
     _alertsHandledToday =
         prefs.getInt('ff_alertsHandledToday') ?? _alertsHandledToday;
     _avgLogs = prefs.getInt('ff_avgLogs') ?? _avgLogs;
+    _uidref = prefs.getString('ff_uidref') ?? _uidref;
   }
 
   late SharedPreferences prefs;
@@ -35,6 +36,13 @@ class FFAppState {
   set avgLogs(int _value) {
     _avgLogs = _value;
     prefs.setInt('ff_avgLogs', _value);
+  }
+
+  String _uidref = '';
+  String get uidref => _uidref;
+  set uidref(String _value) {
+    _uidref = _value;
+    prefs.setString('ff_uidref', _value);
   }
 }
 

@@ -9,7 +9,6 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AlertWrapperStruct.serializer)
       ..add(LogDataRecord.serializer)
-      ..add(MlDataRecord.serializer)
       ..add(PortsStruct.serializer)
       ..add(UsersRecord.serializer))
     .build();

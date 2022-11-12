@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_charts.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -206,13 +207,26 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           8,
                                                                           0,
                                                                           0),
-                                                              child: Text(
-                                                                FFAppState()
-                                                                    .avgLogs
-                                                                    .toString(),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .title1,
+                                                              child: InkWell(
+                                                                onTap:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'Text_update_local_state');
+                                                                  setState(() => FFAppState()
+                                                                          .avgLogs =
+                                                                      random_data
+                                                                          .randomInteger(
+                                                                              6,
+                                                                              600));
+                                                                },
+                                                                child: Text(
+                                                                  FFAppState()
+                                                                      .avgLogs
+                                                                      .toString(),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .title1,
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -533,12 +547,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   FlutterFlowLineChart(
                                     data: [
                                       FFLineChartData(
-                                        xData: chartLogDataRecordList
-                                            .map((d) => d.timestamp)
-                                            .toList(),
-                                        yData: chartLogDataRecordList
-                                            .map((d) => d.srcIp)
-                                            .toList(),
+                                        xData: List.generate(
+                                            random_data.randomInteger(0, 0),
+                                            (index) =>
+                                                random_data.randomDouble(0, 1)),
+                                        yData: List.generate(
+                                            random_data.randomInteger(0, 0),
+                                            (index) =>
+                                                random_data.randomDouble(0, 1)),
                                         settings: LineChartBarData(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
@@ -622,7 +638,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                     ),
                     StreamBuilder<List<LogDataRecord>>(
-                      stream: queryLogDataRecord(),
+                      stream: queryLogDataRecord(
+                        queryBuilder: (logDataRecord) => logDataRecord
+                            .where('uid_ref', isEqualTo: FFAppState().uidref),
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -703,19 +722,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .subtitle1,
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 4, 0, 0),
-                                                    child: Text(
-                                                      'region',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText2,
-                                                    ),
                                                   ),
                                                 ],
                                               ),

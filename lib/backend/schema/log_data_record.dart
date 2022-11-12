@@ -18,18 +18,18 @@ abstract class LogDataRecord
   @BuiltValueField(wireName: 'dest_ip')
   String? get destIp;
 
+  @BuiltValueField(wireName: 'src_port')
+  int? get srcPort;
+
+  @BuiltValueField(wireName: 'dest_port')
+  int? get destPort;
+
   String? get proto;
 
   @BuiltValueField(wireName: 'uid_ref')
   String? get uidRef;
 
   AlertWrapperStruct get alert;
-
-  @BuiltValueField(wireName: 'src_port')
-  int? get srcPort;
-
-  @BuiltValueField(wireName: 'dest_port')
-  int? get destPort;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -38,11 +38,11 @@ abstract class LogDataRecord
   static void _initializeBuilder(LogDataRecordBuilder builder) => builder
     ..srcIp = ''
     ..destIp = ''
+    ..srcPort = 0
+    ..destPort = 0
     ..proto = ''
     ..uidRef = ''
-    ..alert = AlertWrapperStructBuilder()
-    ..srcPort = 0
-    ..destPort = 0;
+    ..alert = AlertWrapperStructBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('logData');
@@ -69,11 +69,11 @@ Map<String, dynamic> createLogDataRecordData({
   DateTime? timestamp,
   String? srcIp,
   String? destIp,
+  int? srcPort,
+  int? destPort,
   String? proto,
   String? uidRef,
   AlertWrapperStruct? alert,
-  int? srcPort,
-  int? destPort,
 }) {
   final firestoreData = serializers.toFirestore(
     LogDataRecord.serializer,
@@ -82,11 +82,11 @@ Map<String, dynamic> createLogDataRecordData({
         ..timestamp = timestamp
         ..srcIp = srcIp
         ..destIp = destIp
+        ..srcPort = srcPort
+        ..destPort = destPort
         ..proto = proto
         ..uidRef = uidRef
-        ..alert = AlertWrapperStructBuilder()
-        ..srcPort = srcPort
-        ..destPort = destPort,
+        ..alert = AlertWrapperStructBuilder(),
     ),
   );
 

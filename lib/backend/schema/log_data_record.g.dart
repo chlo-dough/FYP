@@ -45,6 +45,18 @@ class _$LogDataRecordSerializer implements StructuredSerializer<LogDataRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.srcPort;
+    if (value != null) {
+      result
+        ..add('src_port')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.destPort;
+    if (value != null) {
+      result
+        ..add('dest_port')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.proto;
     if (value != null) {
       result
@@ -58,18 +70,6 @@ class _$LogDataRecordSerializer implements StructuredSerializer<LogDataRecord> {
         ..add('uid_ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
-    }
-    value = object.srcPort;
-    if (value != null) {
-      result
-        ..add('src_port')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.destPort;
-    if (value != null) {
-      result
-        ..add('dest_port')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -106,6 +106,14 @@ class _$LogDataRecordSerializer implements StructuredSerializer<LogDataRecord> {
           result.destIp = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'src_port':
+          result.srcPort = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'dest_port':
+          result.destPort = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
         case 'proto':
           result.proto = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -118,14 +126,6 @@ class _$LogDataRecordSerializer implements StructuredSerializer<LogDataRecord> {
           result.alert.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AlertWrapperStruct))!
               as AlertWrapperStruct);
-          break;
-        case 'src_port':
-          result.srcPort = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
-        case 'dest_port':
-          result.destPort = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -148,15 +148,15 @@ class _$LogDataRecord extends LogDataRecord {
   @override
   final String? destIp;
   @override
+  final int? srcPort;
+  @override
+  final int? destPort;
+  @override
   final String? proto;
   @override
   final String? uidRef;
   @override
   final AlertWrapperStruct alert;
-  @override
-  final int? srcPort;
-  @override
-  final int? destPort;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -167,11 +167,11 @@ class _$LogDataRecord extends LogDataRecord {
       {this.timestamp,
       this.srcIp,
       this.destIp,
+      this.srcPort,
+      this.destPort,
       this.proto,
       this.uidRef,
       required this.alert,
-      this.srcPort,
-      this.destPort,
       this.ffRef})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(alert, r'LogDataRecord', 'alert');
@@ -191,11 +191,11 @@ class _$LogDataRecord extends LogDataRecord {
         timestamp == other.timestamp &&
         srcIp == other.srcIp &&
         destIp == other.destIp &&
+        srcPort == other.srcPort &&
+        destPort == other.destPort &&
         proto == other.proto &&
         uidRef == other.uidRef &&
         alert == other.alert &&
-        srcPort == other.srcPort &&
-        destPort == other.destPort &&
         ffRef == other.ffRef;
   }
 
@@ -209,11 +209,11 @@ class _$LogDataRecord extends LogDataRecord {
                         $jc(
                             $jc($jc($jc(0, timestamp.hashCode), srcIp.hashCode),
                                 destIp.hashCode),
-                            proto.hashCode),
-                        uidRef.hashCode),
-                    alert.hashCode),
-                srcPort.hashCode),
-            destPort.hashCode),
+                            srcPort.hashCode),
+                        destPort.hashCode),
+                    proto.hashCode),
+                uidRef.hashCode),
+            alert.hashCode),
         ffRef.hashCode));
   }
 
@@ -223,11 +223,11 @@ class _$LogDataRecord extends LogDataRecord {
           ..add('timestamp', timestamp)
           ..add('srcIp', srcIp)
           ..add('destIp', destIp)
+          ..add('srcPort', srcPort)
+          ..add('destPort', destPort)
           ..add('proto', proto)
           ..add('uidRef', uidRef)
           ..add('alert', alert)
-          ..add('srcPort', srcPort)
-          ..add('destPort', destPort)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -249,6 +249,14 @@ class LogDataRecordBuilder
   String? get destIp => _$this._destIp;
   set destIp(String? destIp) => _$this._destIp = destIp;
 
+  int? _srcPort;
+  int? get srcPort => _$this._srcPort;
+  set srcPort(int? srcPort) => _$this._srcPort = srcPort;
+
+  int? _destPort;
+  int? get destPort => _$this._destPort;
+  set destPort(int? destPort) => _$this._destPort = destPort;
+
   String? _proto;
   String? get proto => _$this._proto;
   set proto(String? proto) => _$this._proto = proto;
@@ -261,14 +269,6 @@ class LogDataRecordBuilder
   AlertWrapperStructBuilder get alert =>
       _$this._alert ??= new AlertWrapperStructBuilder();
   set alert(AlertWrapperStructBuilder? alert) => _$this._alert = alert;
-
-  int? _srcPort;
-  int? get srcPort => _$this._srcPort;
-  set srcPort(int? srcPort) => _$this._srcPort = srcPort;
-
-  int? _destPort;
-  int? get destPort => _$this._destPort;
-  set destPort(int? destPort) => _$this._destPort = destPort;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -284,11 +284,11 @@ class LogDataRecordBuilder
       _timestamp = $v.timestamp;
       _srcIp = $v.srcIp;
       _destIp = $v.destIp;
+      _srcPort = $v.srcPort;
+      _destPort = $v.destPort;
       _proto = $v.proto;
       _uidRef = $v.uidRef;
       _alert = $v.alert.toBuilder();
-      _srcPort = $v.srcPort;
-      _destPort = $v.destPort;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -317,11 +317,11 @@ class LogDataRecordBuilder
               timestamp: timestamp,
               srcIp: srcIp,
               destIp: destIp,
+              srcPort: srcPort,
+              destPort: destPort,
               proto: proto,
               uidRef: uidRef,
               alert: alert.build(),
-              srcPort: srcPort,
-              destPort: destPort,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

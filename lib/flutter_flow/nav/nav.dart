@@ -119,7 +119,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AlertdetailWidget(
                 alert: params.getParam('alert', ParamType.int),
                 ipAddress: params.getParam('ipAddress', ParamType.String),
-                region: params.getParam('region', ParamType.LatLng),
+                region: params.getParam('region', ParamType.String),
               ),
             ),
             FFRoute(

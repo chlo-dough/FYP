@@ -2,17 +2,14 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_static_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/lat_lng.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapbox_search/mapbox_search.dart';
 
 class AlertdetailWidget extends StatefulWidget {
   const AlertdetailWidget({
@@ -24,7 +21,7 @@ class AlertdetailWidget extends StatefulWidget {
 
   final int? alert;
   final String? ipAddress;
-  final LatLng? region;
+  final String? region;
 
   @override
   _AlertdetailWidgetState createState() => _AlertdetailWidgetState();
@@ -91,29 +88,9 @@ class _AlertdetailWidgetState extends State<AlertdetailWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FlutterFlowStaticMap(
-                        location: LatLng(9.341465, -79.891704),
-                        apiKey: 'ENTER_YOUR_MAPBOX_API_KEY_HERE',
-                        style: MapBoxStyle.Light,
-                        width: 300,
-                        height: 300,
-                        fit: BoxFit.cover,
-                        borderRadius: BorderRadius.circular(0),
-                        zoom: 12,
-                        tilt: 0,
-                        rotation: 0,
-                      ),
-                    ],
-                  ),
-                ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SelectionArea(
                         child: Text(
