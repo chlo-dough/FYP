@@ -5,9 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
-import 'schema/alerts_record.dart';
-import 'schema/logs_record.dart';
-import 'schema/dummy_alerts_record.dart';
+import 'schema/log_data_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -16,9 +14,7 @@ export 'schema/index.dart';
 export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
-export 'schema/alerts_record.dart';
-export 'schema/logs_record.dart';
-export 'schema/dummy_alerts_record.dart';
+export 'schema/log_data_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -62,132 +58,42 @@ Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query AlertsRecords (as a Stream and as a Future).
-Stream<List<AlertsRecord>> queryAlertsRecord({
-  DocumentReference? parent,
+/// Functions to query LogDataRecords (as a Stream and as a Future).
+Stream<List<LogDataRecord>> queryLogDataRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      AlertsRecord.collection(parent),
-      AlertsRecord.serializer,
+      LogDataRecord.collection,
+      LogDataRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<AlertsRecord>> queryAlertsRecordOnce({
-  DocumentReference? parent,
+Future<List<LogDataRecord>> queryLogDataRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      AlertsRecord.collection(parent),
-      AlertsRecord.serializer,
+      LogDataRecord.collection,
+      LogDataRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<AlertsRecord>> queryAlertsRecordPage({
-  DocumentReference? parent,
+Future<FFFirestorePage<LogDataRecord>> queryLogDataRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
 }) =>
     queryCollectionPage(
-      AlertsRecord.collection(parent),
-      AlertsRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query LogsRecords (as a Stream and as a Future).
-Stream<List<LogsRecord>> queryLogsRecord({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      LogsRecord.collection(parent),
-      LogsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<LogsRecord>> queryLogsRecordOnce({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      LogsRecord.collection(parent),
-      LogsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<LogsRecord>> queryLogsRecordPage({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      LogsRecord.collection(parent),
-      LogsRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query DummyAlertsRecords (as a Stream and as a Future).
-Stream<List<DummyAlertsRecord>> queryDummyAlertsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      DummyAlertsRecord.collection,
-      DummyAlertsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<DummyAlertsRecord>> queryDummyAlertsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      DummyAlertsRecord.collection,
-      DummyAlertsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<DummyAlertsRecord>> queryDummyAlertsRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      DummyAlertsRecord.collection,
-      DummyAlertsRecord.serializer,
+      LogDataRecord.collection,
+      LogDataRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

@@ -160,55 +160,62 @@ class _AccountcreatedWidgetState extends State<AccountcreatedWidget>
             end: AlignmentDirectional(-1, 1),
           ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/protocrawl.png',
-              width: 300,
-              height: 300,
-              fit: BoxFit.fill,
-            ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-              child: Text(
-                'Welcome to Protocrawl',
-                style: FlutterFlowTheme.of(context).title1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation1']!),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 120),
-              child: Text(
-                'Proceed to safeguard your virtual environment.',
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).title3.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal,
-                    ),
-              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation2']!),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 24),
-              child: Text(
-                'Verify by clicking in the link sent in your email to proceed.',
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).title1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal,
-                    ),
-              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation3']!),
-            ),
-          ],
+        child: InkWell(
+          onTap: () async {
+            logFirebaseEvent('Column_navigate_to');
+
+            context.pushNamed('setupprofile');
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/protocrawl.png',
+                width: 300,
+                height: 300,
+                fit: BoxFit.fill,
+              ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                child: Text(
+                  'Welcome to Protocrawl',
+                  style: FlutterFlowTheme.of(context).title1.override(
+                        fontFamily: 'Lexend Deca',
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation1']!),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 120),
+                child: Text(
+                  'Proceed to safeguard your virtual environment.',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).title3.override(
+                        fontFamily: 'Lexend Deca',
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                      ),
+                ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation2']!),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 24),
+                child: Text(
+                  'Verify by clicking in the link sent in your email to proceed.',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).title1.override(
+                        fontFamily: 'Lexend Deca',
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                      ),
+                ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation3']!),
+              ),
+            ],
+          ),
         ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
       ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
     );

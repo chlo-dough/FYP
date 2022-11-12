@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_charts.dart';
@@ -22,10 +23,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<UsersRecord>>(
-      stream: queryUsersRecord(
-        singleRecord: true,
-      ),
+    return StreamBuilder<UsersRecord>(
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -39,14 +38,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             ),
           );
         }
-        List<UsersRecord> homePageUsersRecordList = snapshot.data!;
-        // Return an empty Container when the document does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final homePageUsersRecord = homePageUsersRecordList.isNotEmpty
-            ? homePageUsersRecordList.first
-            : null;
+        final homePageUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -452,7 +444,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Alerts Handled ',
+                                                              'Blocks by ML',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyText2,
@@ -466,13 +458,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           0,
                                                                           0),
                                                               child: Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  FFAppState()
-                                                                      .alertsHandledToday
-                                                                      .toString(),
-                                                                  '0',
-                                                                ),
+                                                                '3,200',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .title1,
@@ -521,8 +507,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           ],
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: StreamBuilder<List<LogsRecord>>(
-                          stream: queryLogsRecord(),
+                        child: StreamBuilder<List<LogDataRecord>>(
+                          stream: queryLogDataRecord(),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -537,7 +523,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 ),
                               );
                             }
-                            List<LogsRecord> chartLogsRecordList =
+                            List<LogDataRecord> chartLogDataRecordList =
                                 snapshot.data!;
                             return Container(
                               width: 300,
@@ -547,11 +533,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   FlutterFlowLineChart(
                                     data: [
                                       FFLineChartData(
-                                        xData: chartLogsRecordList
+                                        xData: chartLogDataRecordList
                                             .map((d) => d.timestamp)
                                             .toList(),
-                                        yData: chartLogsRecordList
-                                            .map((d) => d.frequency)
+                                        yData: chartLogDataRecordList
+                                            .map((d) => d.srcIp)
                                             .toList(),
                                         settings: LineChartBarData(
                                           color: FlutterFlowTheme.of(context)
@@ -604,7 +590,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             'Traffic'),
                                       ],
                                       width: 100,
-                                      height: 50,
+                                      height: 30,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyText1,
                                       textPadding:
@@ -612,7 +598,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               5, 0, 0, 0),
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           5, 0, 5, 0),
-                                      borderWidth: 1,
                                       borderColor: Colors.black,
                                       indicatorSize: 10,
                                     ),
@@ -636,10 +621,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ),
                       ),
                     ),
-                    StreamBuilder<List<AlertsRecord>>(
-                      stream: queryAlertsRecord(
-                        limit: 30,
-                      ),
+                    StreamBuilder<List<LogDataRecord>>(
+                      stream: queryLogDataRecord(),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -654,16 +637,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ),
                           );
                         }
-                        List<AlertsRecord> listViewAlertsRecordList =
+                        List<LogDataRecord> listViewLogDataRecordList =
                             snapshot.data!;
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: listViewAlertsRecordList.length,
+                          itemCount: listViewLogDataRecordList.length,
                           itemBuilder: (context, listViewIndex) {
-                            final listViewAlertsRecord =
-                                listViewAlertsRecordList[listViewIndex];
+                            final listViewLogDataRecord =
+                                listViewLogDataRecordList[listViewIndex];
                             return Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
@@ -714,8 +697,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 children: [
                                                   Text(
                                                     dateTimeFormat(
-                                                        'd/M h:mm a',
-                                                        listViewAlertsRecord
+                                                        'jms',
+                                                        listViewLogDataRecord
                                                             .timestamp!),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -749,7 +732,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 )),
                                                 SelectionArea(
                                                     child: Text(
-                                                  listViewAlertsRecord.priority!
+                                                  listViewLogDataRecord
+                                                      .alert.severity!
                                                       .toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -777,14 +761,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     'alertdetail',
                                                     queryParams: {
                                                       'alert': serializeParam(
-                                                        listViewAlertsRecord
-                                                            .priority,
+                                                        listViewLogDataRecord
+                                                            .alert.severity,
                                                         ParamType.int,
                                                       ),
                                                       'ipAddress':
                                                           serializeParam(
-                                                        listViewAlertsRecord
-                                                            .source,
+                                                        listViewLogDataRecord
+                                                            .srcIp,
                                                         ParamType.String,
                                                       ),
                                                     }.withoutNulls,

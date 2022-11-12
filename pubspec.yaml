@@ -32,6 +32,7 @@ dependencies:
   cloud_firestore: 3.2.1
   cloud_firestore_platform_interface: 5.5.10
   cloud_firestore_web: 2.6.19
+  equatable: 2.0.3
   file_picker: 4.5.1
   firebase_analytics: 9.1.12
   firebase_analytics_platform_interface: 3.1.10
@@ -61,6 +62,7 @@ dependencies:
   intl: 0.17.0
   json_path: 0.4.1
   json_serializable: 6.3.1
+  mapbox_search: 3.0.1+2
   mime_type: 1.0.0
   page_transition: 2.0.4
   photo_view: 0.14.0

@@ -265,7 +265,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   onPressed: () async {
                     logFirebaseEvent('Button-Login_navigate_to');
 
-                    context.pushNamed('displayDummy');
+                    context.pushNamed('HomePage');
                   },
                   text: 'Login',
                   options: FFButtonOptions(
