@@ -87,98 +87,6 @@ class _StartpageWidgetState extends State<StartpageWidget> {
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/illi_3@2x.png',
-                                    width: 300,
-                                    height: 300,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'Header Two',
-                                          style: FlutterFlowTheme.of(context)
-                                              .title2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/illi_1@2x.png',
-                                    width: 300,
-                                    height: 300,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'Header Three',
-                                          style: FlutterFlowTheme.of(context)
-                                              .title2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -189,7 +97,7 @@ class _StartpageWidgetState extends State<StartpageWidget> {
                           child: smooth_page_indicator.SmoothPageIndicator(
                             controller: pageViewController ??=
                                 PageController(initialPage: 0),
-                            count: 3,
+                            count: 1,
                             axisDirection: Axis.horizontal,
                             onDotClicked: (i) {
                               pageViewController!.animateToPage(

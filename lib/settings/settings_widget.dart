@@ -23,7 +23,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: Color(0xFF4B39EF),
+        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -35,20 +35,16 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () async {
-            logFirebaseEvent('IconButton_navigate_to');
-
-            context.pushNamed('HomePage');
+          onPressed: () {
+            print('IconButton pressed ...');
           },
         ),
         title: Text(
           'Settings',
-          textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
+                color: FlutterFlowTheme.of(context).primaryText,
                 fontSize: 22,
-                fontWeight: FontWeight.bold,
               ),
         ),
         actions: [],
