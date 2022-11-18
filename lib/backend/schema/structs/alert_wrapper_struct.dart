@@ -17,8 +17,6 @@ abstract class AlertWrapperStruct
 
   int? get severity;
 
-  String? get isFlagged;
-
   /// Utility class for Firestore updates
   FirestoreUtilData get firestoreUtilData;
 
@@ -26,7 +24,6 @@ abstract class AlertWrapperStruct
     ..action = ''
     ..category = ''
     ..severity = 0
-    ..isFlagged = ''
     ..firestoreUtilData = FirestoreUtilData();
 
   AlertWrapperStruct._();
@@ -39,7 +36,6 @@ AlertWrapperStruct createAlertWrapperStruct({
   String? action,
   String? category,
   int? severity,
-  String? isFlagged,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -50,7 +46,6 @@ AlertWrapperStruct createAlertWrapperStruct({
         ..action = action
         ..category = category
         ..severity = severity
-        ..isFlagged = isFlagged
         ..firestoreUtilData = FirestoreUtilData(
           clearUnsetFields: clearUnsetFields,
           create: create,

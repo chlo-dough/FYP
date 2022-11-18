@@ -345,7 +345,7 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                 await currentUserReference!.update(usersUpdateData);
                 logFirebaseEvent('Button-SaveAndContinue_navigate_to');
 
-                context.pushNamed('HomePage');
+                context.pushNamed('ConnectMachine');
               },
               text: 'Save and Continue',
               options: FFButtonOptions(

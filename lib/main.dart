@@ -63,8 +63,10 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  void setLocale(String language) =>
-      setState(() => _locale = createLocale(language));
+  void setLocale(String language) {
+    setState(() => _locale = createLocale(language));
+  }
+
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
         FlutterFlowTheme.saveThemeMode(mode);
@@ -117,7 +119,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'Plot': PlotWidget(),
+      'History': HistoryWidget(),
       'Settings': SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -150,10 +152,14 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.insert_chart_outlined,
+              Icons.insert_chart,
               size: 24,
             ),
-            label: 'Plot',
+            activeIcon: Icon(
+              Icons.add_chart,
+              size: 24,
+            ),
+            label: 'History',
             tooltip: '',
           ),
           BottomNavigationBarItem(

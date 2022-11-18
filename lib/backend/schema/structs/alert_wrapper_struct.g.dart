@@ -46,13 +46,6 @@ class _$AlertWrapperStructSerializer
         ..add('severity')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.isFlagged;
-    if (value != null) {
-      result
-        ..add('isFlagged')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     return result;
   }
 
@@ -80,10 +73,6 @@ class _$AlertWrapperStructSerializer
           result.severity = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'isFlagged':
-          result.isFlagged = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'firestoreUtilData':
           result.firestoreUtilData = serializers.deserialize(value,
                   specifiedType: const FullType(FirestoreUtilData))!
@@ -104,8 +93,6 @@ class _$AlertWrapperStruct extends AlertWrapperStruct {
   @override
   final int? severity;
   @override
-  final String? isFlagged;
-  @override
   final FirestoreUtilData firestoreUtilData;
 
   factory _$AlertWrapperStruct(
@@ -116,7 +103,6 @@ class _$AlertWrapperStruct extends AlertWrapperStruct {
       {this.action,
       this.category,
       this.severity,
-      this.isFlagged,
       required this.firestoreUtilData})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -139,17 +125,13 @@ class _$AlertWrapperStruct extends AlertWrapperStruct {
         action == other.action &&
         category == other.category &&
         severity == other.severity &&
-        isFlagged == other.isFlagged &&
         firestoreUtilData == other.firestoreUtilData;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, action.hashCode), category.hashCode),
-                severity.hashCode),
-            isFlagged.hashCode),
+        $jc($jc($jc(0, action.hashCode), category.hashCode), severity.hashCode),
         firestoreUtilData.hashCode));
   }
 
@@ -159,7 +141,6 @@ class _$AlertWrapperStruct extends AlertWrapperStruct {
           ..add('action', action)
           ..add('category', category)
           ..add('severity', severity)
-          ..add('isFlagged', isFlagged)
           ..add('firestoreUtilData', firestoreUtilData))
         .toString();
   }
@@ -181,10 +162,6 @@ class AlertWrapperStructBuilder
   int? get severity => _$this._severity;
   set severity(int? severity) => _$this._severity = severity;
 
-  String? _isFlagged;
-  String? get isFlagged => _$this._isFlagged;
-  set isFlagged(String? isFlagged) => _$this._isFlagged = isFlagged;
-
   FirestoreUtilData? _firestoreUtilData;
   FirestoreUtilData? get firestoreUtilData => _$this._firestoreUtilData;
   set firestoreUtilData(FirestoreUtilData? firestoreUtilData) =>
@@ -200,7 +177,6 @@ class AlertWrapperStructBuilder
       _action = $v.action;
       _category = $v.category;
       _severity = $v.severity;
-      _isFlagged = $v.isFlagged;
       _firestoreUtilData = $v.firestoreUtilData;
       _$v = null;
     }
@@ -227,7 +203,6 @@ class AlertWrapperStructBuilder
             action: action,
             category: category,
             severity: severity,
-            isFlagged: isFlagged,
             firestoreUtilData: BuiltValueNullFieldError.checkNotNull(
                 firestoreUtilData, r'AlertWrapperStruct', 'firestoreUtilData'));
     replace(_$result);

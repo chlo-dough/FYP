@@ -351,7 +351,7 @@ class _SettingsAccountWidgetState extends State<SettingsAccountWidget> {
                 }
 
                 logFirebaseEvent('Button_update_local_state');
-                setState(() => FFAppState().uidref = '');
+                setState(() => FFAppState().email = '');
               },
               text: 'Log Out',
               options: FFButtonOptions(

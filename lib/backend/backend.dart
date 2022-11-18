@@ -6,7 +6,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
 import 'schema/log_data_record.dart';
-import 'schema/logs_record.dart';
+import 'schema/traffic_record.dart';
+import 'schema/ml_data_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -16,7 +17,8 @@ export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
 export 'schema/log_data_record.dart';
-export 'schema/logs_record.dart';
+export 'schema/traffic_record.dart';
+export 'schema/ml_data_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -102,45 +104,84 @@ Future<FFFirestorePage<LogDataRecord>> queryLogDataRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query LogsRecords (as a Stream and as a Future).
-Stream<List<LogsRecord>> queryLogsRecord({
-  DocumentReference? parent,
+/// Functions to query TrafficRecords (as a Stream and as a Future).
+Stream<List<TrafficRecord>> queryTrafficRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      LogsRecord.collection(parent),
-      LogsRecord.serializer,
+      TrafficRecord.collection,
+      TrafficRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<LogsRecord>> queryLogsRecordOnce({
-  DocumentReference? parent,
+Future<List<TrafficRecord>> queryTrafficRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      LogsRecord.collection(parent),
-      LogsRecord.serializer,
+      TrafficRecord.collection,
+      TrafficRecord.serializer,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<LogsRecord>> queryLogsRecordPage({
-  DocumentReference? parent,
+Future<FFFirestorePage<TrafficRecord>> queryTrafficRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
 }) =>
     queryCollectionPage(
-      LogsRecord.collection(parent),
-      LogsRecord.serializer,
+      TrafficRecord.collection,
+      TrafficRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query MlDataRecords (as a Stream and as a Future).
+Stream<List<MlDataRecord>> queryMlDataRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MlDataRecord.collection,
+      MlDataRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MlDataRecord>> queryMlDataRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MlDataRecord.collection,
+      MlDataRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<MlDataRecord>> queryMlDataRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      MlDataRecord.collection,
+      MlDataRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

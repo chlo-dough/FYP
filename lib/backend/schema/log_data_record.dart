@@ -26,10 +26,11 @@ abstract class LogDataRecord
 
   String? get proto;
 
-  @BuiltValueField(wireName: 'uid_ref')
-  String? get uidRef;
-
   AlertWrapperStruct get alert;
+
+  String? get email;
+
+  String? get isFlagged;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -41,8 +42,9 @@ abstract class LogDataRecord
     ..srcPort = 0
     ..destPort = 0
     ..proto = ''
-    ..uidRef = ''
-    ..alert = AlertWrapperStructBuilder();
+    ..alert = AlertWrapperStructBuilder()
+    ..email = ''
+    ..isFlagged = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('logData');
@@ -72,8 +74,9 @@ Map<String, dynamic> createLogDataRecordData({
   int? srcPort,
   int? destPort,
   String? proto,
-  String? uidRef,
   AlertWrapperStruct? alert,
+  String? email,
+  String? isFlagged,
 }) {
   final firestoreData = serializers.toFirestore(
     LogDataRecord.serializer,
@@ -85,8 +88,9 @@ Map<String, dynamic> createLogDataRecordData({
         ..srcPort = srcPort
         ..destPort = destPort
         ..proto = proto
-        ..uidRef = uidRef
-        ..alert = AlertWrapperStructBuilder(),
+        ..alert = AlertWrapperStructBuilder()
+        ..email = email
+        ..isFlagged = isFlagged,
     ),
   );
 

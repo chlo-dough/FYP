@@ -64,10 +64,17 @@ class _$LogDataRecordSerializer implements StructuredSerializer<LogDataRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.uidRef;
+    value = object.email;
     if (value != null) {
       result
-        ..add('uid_ref')
+        ..add('email')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.isFlagged;
+    if (value != null) {
+      result
+        ..add('isFlagged')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -118,14 +125,18 @@ class _$LogDataRecordSerializer implements StructuredSerializer<LogDataRecord> {
           result.proto = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'uid_ref':
-          result.uidRef = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'alert':
           result.alert.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AlertWrapperStruct))!
               as AlertWrapperStruct);
+          break;
+        case 'email':
+          result.email = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'isFlagged':
+          result.isFlagged = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -154,9 +165,11 @@ class _$LogDataRecord extends LogDataRecord {
   @override
   final String? proto;
   @override
-  final String? uidRef;
-  @override
   final AlertWrapperStruct alert;
+  @override
+  final String? email;
+  @override
+  final String? isFlagged;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -170,8 +183,9 @@ class _$LogDataRecord extends LogDataRecord {
       this.srcPort,
       this.destPort,
       this.proto,
-      this.uidRef,
       required this.alert,
+      this.email,
+      this.isFlagged,
       this.ffRef})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(alert, r'LogDataRecord', 'alert');
@@ -194,8 +208,9 @@ class _$LogDataRecord extends LogDataRecord {
         srcPort == other.srcPort &&
         destPort == other.destPort &&
         proto == other.proto &&
-        uidRef == other.uidRef &&
         alert == other.alert &&
+        email == other.email &&
+        isFlagged == other.isFlagged &&
         ffRef == other.ffRef;
   }
 
@@ -207,13 +222,17 @@ class _$LogDataRecord extends LogDataRecord {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, timestamp.hashCode), srcIp.hashCode),
-                                destIp.hashCode),
-                            srcPort.hashCode),
-                        destPort.hashCode),
-                    proto.hashCode),
-                uidRef.hashCode),
-            alert.hashCode),
+                            $jc(
+                                $jc(
+                                    $jc($jc(0, timestamp.hashCode),
+                                        srcIp.hashCode),
+                                    destIp.hashCode),
+                                srcPort.hashCode),
+                            destPort.hashCode),
+                        proto.hashCode),
+                    alert.hashCode),
+                email.hashCode),
+            isFlagged.hashCode),
         ffRef.hashCode));
   }
 
@@ -226,8 +245,9 @@ class _$LogDataRecord extends LogDataRecord {
           ..add('srcPort', srcPort)
           ..add('destPort', destPort)
           ..add('proto', proto)
-          ..add('uidRef', uidRef)
           ..add('alert', alert)
+          ..add('email', email)
+          ..add('isFlagged', isFlagged)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -261,14 +281,18 @@ class LogDataRecordBuilder
   String? get proto => _$this._proto;
   set proto(String? proto) => _$this._proto = proto;
 
-  String? _uidRef;
-  String? get uidRef => _$this._uidRef;
-  set uidRef(String? uidRef) => _$this._uidRef = uidRef;
-
   AlertWrapperStructBuilder? _alert;
   AlertWrapperStructBuilder get alert =>
       _$this._alert ??= new AlertWrapperStructBuilder();
   set alert(AlertWrapperStructBuilder? alert) => _$this._alert = alert;
+
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
+
+  String? _isFlagged;
+  String? get isFlagged => _$this._isFlagged;
+  set isFlagged(String? isFlagged) => _$this._isFlagged = isFlagged;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -287,8 +311,9 @@ class LogDataRecordBuilder
       _srcPort = $v.srcPort;
       _destPort = $v.destPort;
       _proto = $v.proto;
-      _uidRef = $v.uidRef;
       _alert = $v.alert.toBuilder();
+      _email = $v.email;
+      _isFlagged = $v.isFlagged;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -320,8 +345,9 @@ class LogDataRecordBuilder
               srcPort: srcPort,
               destPort: destPort,
               proto: proto,
-              uidRef: uidRef,
               alert: alert.build(),
+              email: email,
+              isFlagged: isFlagged,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

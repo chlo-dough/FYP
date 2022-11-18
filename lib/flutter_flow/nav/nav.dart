@@ -107,6 +107,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ForgotpasswordPutemailWidget(),
             ),
             FFRoute(
+              name: 'ConnectMachine',
+              path: 'connectMachine',
+              builder: (context, params) => ConnectMachineWidget(),
+            ),
+            FFRoute(
               name: 'HomePage',
               path: 'homePage',
               builder: (context, params) => params.isEmpty
@@ -114,20 +119,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomePageWidget(),
             ),
             FFRoute(
-              name: 'alertdetail',
-              path: 'alertdetail',
-              builder: (context, params) => AlertdetailWidget(
-                alert: params.getParam('alert', ParamType.int),
-                ipAddress: params.getParam('ipAddress', ParamType.String),
-                region: params.getParam('region', ParamType.String),
-              ),
-            ),
-            FFRoute(
-              name: 'Plot',
-              path: 'plot',
+              name: 'History',
+              path: 'history',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Plot')
-                  : PlotWidget(),
+                  ? NavBarPage(initialPage: 'History')
+                  : HistoryWidget(),
             ),
             FFRoute(
               name: 'Settings',
@@ -137,14 +133,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : SettingsWidget(),
             ),
             FFRoute(
-              name: 'Settings-Account',
-              path: 'settingsAccount',
-              builder: (context, params) => SettingsAccountWidget(),
-            ),
-            FFRoute(
               name: 'Settings-Account-EditProfile',
               path: 'settingsAccountEditProfile',
               builder: (context, params) => SettingsAccountEditProfileWidget(),
+            ),
+            FFRoute(
+              name: 'Settings-Account',
+              path: 'settingsAccount',
+              builder: (context, params) => SettingsAccountWidget(),
             ),
             FFRoute(
               name: 'Setting-Account-ChangePassword',

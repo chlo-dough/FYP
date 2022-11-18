@@ -269,7 +269,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     context.pushNamed('HomePage');
 
                     logFirebaseEvent('Button-Login_update_local_state');
-                    setState(() => FFAppState().uidref = currentUserUid);
+                    setState(() => FFAppState().email = currentUserEmail);
                   },
                   text: 'Login',
                   options: FFButtonOptions(
