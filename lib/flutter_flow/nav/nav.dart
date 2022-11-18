@@ -97,14 +97,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AccountcreatedWidget(),
             ),
             FFRoute(
-              name: 'setupprofile',
-              path: 'setupprofile',
-              builder: (context, params) => SetupprofileWidget(),
-            ),
-            FFRoute(
               name: 'forgotpassword-putemail',
               path: 'forgotpasswordPutemail',
               builder: (context, params) => ForgotpasswordPutemailWidget(),
+            ),
+            FFRoute(
+              name: 'setupprofile',
+              path: 'setupprofile',
+              builder: (context, params) => SetupprofileWidget(),
             ),
             FFRoute(
               name: 'ConnectMachine',
@@ -143,15 +143,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsAccountWidget(),
             ),
             FFRoute(
+              name: 'Setting-Notifications',
+              path: 'Setting-Notificatiton-Reworking',
+              builder: (context, params) => SettingNotificationsWidget(),
+            ),
+            FFRoute(
               name: 'Setting-Account-ChangePassword',
               path: 'Setting-Account-ChangePassword-Reworking',
               builder: (context, params) =>
                   SettingAccountChangePasswordWidget(),
-            ),
-            FFRoute(
-              name: 'Setting-Notifications',
-              path: 'Setting-Notificatiton-Reworking',
-              builder: (context, params) => SettingNotificationsWidget(),
             ),
             FFRoute(
               name: 'Setting-About',

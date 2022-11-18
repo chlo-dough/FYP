@@ -245,6 +245,9 @@ class _SetupprofileWidgetState extends State<SetupprofileWidget> {
                       photoUrl: uploadedFileUrl,
                     );
                     await currentUserReference!.update(usersUpdateData);
+                    logFirebaseEvent('Button_navigate_to');
+
+                    context.pushNamed('Settings-Account-EditProfile');
                   },
                   text: 'Change Photo',
                   options: FFButtonOptions(

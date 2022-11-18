@@ -23,7 +23,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).maximumBlueGreen,
         automaticallyImplyLeading: false,
         title: Text(
           'Settings',

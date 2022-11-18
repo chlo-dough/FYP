@@ -20,6 +20,9 @@ class FFAppState {
     _email = prefs.getString('ff_email') ?? _email;
     _traffic =
         prefs.getStringList('ff_traffic')?.map(int.parse).toList() ?? _traffic;
+    _lastupdated = prefs.containsKey('ff_lastupdated')
+        ? DateTime.fromMillisecondsSinceEpoch(prefs.getInt('ff_lastupdated')!)
+        : null;
   }
 
   late SharedPreferences prefs;
@@ -67,6 +70,16 @@ class FFAppState {
   }
 
   List<int> time = [1, 2, 4, 6, 8, 2, 1, 9, 7, 4];
+
+  DateTime? _lastupdated = DateTime.fromMillisecondsSinceEpoch(1668771600000);
+  DateTime? get lastupdated => _lastupdated;
+  set lastupdated(DateTime? _value) {
+    if (_value == null) {
+      return;
+    }
+    _lastupdated = _value;
+    prefs.setInt('ff_lastupdated', _value.millisecondsSinceEpoch);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

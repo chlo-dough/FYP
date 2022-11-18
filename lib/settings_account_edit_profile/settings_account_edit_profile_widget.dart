@@ -97,6 +97,24 @@ class _SettingsAccountEditProfileWidgetState
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                         child: InkWell(
+                          onTap: () async {
+                            logFirebaseEvent('CircleImage_expand_image');
+                            await Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.fade,
+                                child: FlutterFlowExpandedImageView(
+                                  image: Image.network(
+                                    'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
+                                    fit: BoxFit.contain,
+                                  ),
+                                  allowRotation: false,
+                                  tag: 'circleImageTag',
+                                  useHeroAnimation: true,
+                                ),
+                              ),
+                            );
+                          },
                           onLongPress: () async {
                             logFirebaseEvent('CircleImage_expand_image');
                             await Navigator.push(
@@ -186,6 +204,16 @@ class _SettingsAccountEditProfileWidgetState
                             return;
                           }
                         }
+
+                        logFirebaseEvent('Button_backend_call');
+
+                        final usersUpdateData = createUsersRecordData(
+                          photoUrl: uploadedFileUrl,
+                        );
+                        await currentUserReference!.update(usersUpdateData);
+                        logFirebaseEvent('Button_navigate_to');
+
+                        context.pushNamed('Settings-Account-EditProfile');
                       },
                       text: 'Change Photo',
                       options: FFButtonOptions(

@@ -68,7 +68,7 @@ class _SettingAboutWidgetState extends State<SettingAboutWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
                 child: SelectionArea(
                     child: Text(
-                  'Protocrawl is a free and open source, fast and robust network Intrusion Detection System (IDS). Protocrawl focuses on security, usability, and efficiency. We use Suricata + ELK (Elasticsearch, Logstash, Kibana) for our threat hunting capability. ',
+                  'Protocrawl is a free and open source, fast and robust network Intrusion Detection System (IDS). Protocrawl focuses on security, usability, and efficiency. We use Suricata + ELK (Elasticsearch, Logstash, Kibana) for our threat hunting capability. \n\nPlease contact us at protocrawl2022@gmail.com for enquiries.',
                   style: FlutterFlowTheme.of(context).bodyText1,
                 )),
               ),

@@ -1,5 +1,6 @@
 import '../flutter_flow/flutter_flow_charts.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,7 @@ class HistoryWidget extends StatefulWidget {
 
 class _HistoryWidgetState extends State<HistoryWidget> {
   DateTime? datePicked;
-  String? dropDownValue1;
-  String? dropDownValue2;
+  String? dropDownValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -54,8 +54,8 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                 child: FlutterFlowLineChart(
                   data: [
                     FFLineChartData(
-                      xData: FFAppState().time.map((e) => e).toList(),
-                      yData: FFAppState().traffic,
+                      xData: FFAppState().traffic,
+                      yData: FFAppState().time,
                       settings: LineChartBarData(
                         color: Color(0xFFD354E3),
                         barWidth: 3,
@@ -84,13 +84,12 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                   ),
                 ),
               ),
-              Row(
+              Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SelectionArea(
                           child: Text(
@@ -100,17 +99,18 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               fontWeight: FontWeight.w900,
                             ),
                       )),
-                      FlutterFlowDropDown<String>(
-                        options: [
-                          'Last Hour',
-                          'Last 24 hrs',
-                          'Last week',
-                          'Last year',
-                          'Since Logged in'
-                        ],
-                        onChanged: (val) async {
-                          setState(() => dropDownValue1 = val);
-                          logFirebaseEvent('DropDown_date_time_picker');
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        buttonSize: 60,
+                        icon: Icon(
+                          Icons.calendar_today_outlined,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 30,
+                        ),
+                        onPressed: () async {
+                          logFirebaseEvent('IconButton_date_time_picker');
                           await DatePicker.showDateTimePicker(
                             context,
                             showTitleActions: true,
@@ -121,28 +121,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             minTime: DateTime(0, 0, 0),
                           );
                         },
-                        width: 180,
-                        height: 50,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.black,
-                                ),
-                        hintText: 'Please select...',
-                        fillColor: Colors.white,
-                        elevation: 2,
-                        borderColor: FlutterFlowTheme.of(context).black600,
-                        borderWidth: 3,
-                        borderRadius: 0,
-                        margin: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-                        hidesUnderline: true,
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
                       SelectionArea(
                           child: Text(
                         'Adjust Traffic Type',
@@ -158,8 +137,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           'by REGION',
                           'by the size of ur mom'
                         ],
-                        onChanged: (val) =>
-                            setState(() => dropDownValue2 = val),
+                        onChanged: (val) => setState(() => dropDownValue = val),
                         width: 180,
                         height: 50,
                         textStyle:
