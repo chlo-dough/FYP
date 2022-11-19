@@ -10,19 +10,20 @@ abstract class TrafficRecord
     implements Built<TrafficRecord, TrafficRecordBuilder> {
   static Serializer<TrafficRecord> get serializer => _$trafficRecordSerializer;
 
-  int? get freq;
-
   String? get email;
 
-  DateTime? get interval;
+  int? get freq;
+
+  int? get interval;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(TrafficRecordBuilder builder) => builder
+    ..email = ''
     ..freq = 0
-    ..email = '';
+    ..interval = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('traffic');
@@ -46,16 +47,16 @@ abstract class TrafficRecord
 }
 
 Map<String, dynamic> createTrafficRecordData({
-  int? freq,
   String? email,
-  DateTime? interval,
+  int? freq,
+  int? interval,
 }) {
   final firestoreData = serializers.toFirestore(
     TrafficRecord.serializer,
     TrafficRecord(
       (t) => t
-        ..freq = freq
         ..email = email
+        ..freq = freq
         ..interval = interval,
     ),
   );

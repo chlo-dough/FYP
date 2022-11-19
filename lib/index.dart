@@ -19,3 +19,4 @@ export 'setting_notifications/setting_notifications_widget.dart'
 export 'setting_account_change_password/setting_account_change_password_widget.dart'
     show SettingAccountChangePasswordWidget;
 export 'setting_about/setting_about_widget.dart' show SettingAboutWidget;
+export 'slide/slide_widget.dart' show SlideWidget;

@@ -20,12 +20,6 @@ class _$TrafficRecordSerializer implements StructuredSerializer<TrafficRecord> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.freq;
-    if (value != null) {
-      result
-        ..add('freq')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.email;
     if (value != null) {
       result
@@ -33,12 +27,17 @@ class _$TrafficRecordSerializer implements StructuredSerializer<TrafficRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.freq;
+    if (value != null) {
+      result
+        ..add('freq')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.interval;
     if (value != null) {
       result
         ..add('interval')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -63,17 +62,17 @@ class _$TrafficRecordSerializer implements StructuredSerializer<TrafficRecord> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'freq':
-          result.freq = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'email':
           result.email = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'freq':
+          result.freq = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
         case 'interval':
           result.interval = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -90,18 +89,18 @@ class _$TrafficRecordSerializer implements StructuredSerializer<TrafficRecord> {
 
 class _$TrafficRecord extends TrafficRecord {
   @override
-  final int? freq;
-  @override
   final String? email;
   @override
-  final DateTime? interval;
+  final int? freq;
+  @override
+  final int? interval;
   @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$TrafficRecord([void Function(TrafficRecordBuilder)? updates]) =>
       (new TrafficRecordBuilder()..update(updates))._build();
 
-  _$TrafficRecord._({this.freq, this.email, this.interval, this.ffRef})
+  _$TrafficRecord._({this.email, this.freq, this.interval, this.ffRef})
       : super._();
 
   @override
@@ -115,8 +114,8 @@ class _$TrafficRecord extends TrafficRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is TrafficRecord &&
-        freq == other.freq &&
         email == other.email &&
+        freq == other.freq &&
         interval == other.interval &&
         ffRef == other.ffRef;
   }
@@ -124,15 +123,15 @@ class _$TrafficRecord extends TrafficRecord {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, freq.hashCode), email.hashCode), interval.hashCode),
+        $jc($jc($jc(0, email.hashCode), freq.hashCode), interval.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'TrafficRecord')
-          ..add('freq', freq)
           ..add('email', email)
+          ..add('freq', freq)
           ..add('interval', interval)
           ..add('ffRef', ffRef))
         .toString();
@@ -143,17 +142,17 @@ class TrafficRecordBuilder
     implements Builder<TrafficRecord, TrafficRecordBuilder> {
   _$TrafficRecord? _$v;
 
-  int? _freq;
-  int? get freq => _$this._freq;
-  set freq(int? freq) => _$this._freq = freq;
-
   String? _email;
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  DateTime? _interval;
-  DateTime? get interval => _$this._interval;
-  set interval(DateTime? interval) => _$this._interval = interval;
+  int? _freq;
+  int? get freq => _$this._freq;
+  set freq(int? freq) => _$this._freq = freq;
+
+  int? _interval;
+  int? get interval => _$this._interval;
+  set interval(int? interval) => _$this._interval = interval;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -166,8 +165,8 @@ class TrafficRecordBuilder
   TrafficRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _freq = $v.freq;
       _email = $v.email;
+      _freq = $v.freq;
       _interval = $v.interval;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -192,7 +191,7 @@ class TrafficRecordBuilder
   _$TrafficRecord _build() {
     final _$result = _$v ??
         new _$TrafficRecord._(
-            freq: freq, email: email, interval: interval, ffRef: ffRef);
+            email: email, freq: freq, interval: interval, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

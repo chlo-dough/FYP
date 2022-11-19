@@ -157,6 +157,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Setting-About',
               path: 'Setting-About',
               builder: (context, params) => SettingAboutWidget(),
+            ),
+            FFRoute(
+              name: 'slide',
+              path: 'slide',
+              builder: (context, params) => SlideWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

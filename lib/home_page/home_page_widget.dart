@@ -378,6 +378,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               barWidth: 3,
                               isCurved: true,
                               preventCurveOverShooting: true,
+                              belowBarData: BarAreaData(
+                                show: true,
+                                color: Color(0xFFCFCAFF),
+                              ),
                             ),
                           )
                         ],
@@ -390,8 +394,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           borderWidth: 1,
                         ),
                         axisBounds: AxisBounds(),
-                        xAxisLabelInfo: AxisLabelInfo(),
-                        yAxisLabelInfo: AxisLabelInfo(),
+                        xAxisLabelInfo: AxisLabelInfo(
+                          title: 'time',
+                          titleTextStyle: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                        yAxisLabelInfo: AxisLabelInfo(
+                          title: 'frequency',
+                          titleTextStyle: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
                       ),
                       Align(
                         alignment: AlignmentDirectional(1, 1),
@@ -410,11 +424,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 color:
                                     FlutterFlowTheme.of(context).primaryBtnText,
                               ),
-                          textPadding:
-                              EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                           padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                          borderWidth: 1,
-                          borderColor: Colors.black,
                           indicatorSize: 10,
                         ),
                       ),
